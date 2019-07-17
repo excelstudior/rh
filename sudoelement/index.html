@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        /* javascript, jquery can't select psudo element, 清楚浮动 */
+        /* .demo{
+            width: 100px;
+            height: 100px;
+            background-color: aqua
+        }
+        .demo::after{
+            content: '>'
+        }
+        .demo::before{
+            content:'<'
+        }*/
+        li{
+            float:left;
+            width: 20px;
+            height: 20px;
+            text-align: center;
+            background-color:aqua;
+            margin: 0 5px;
+        }
+        ul{
+            border:1px solid black;
+        }
+        ul::after{
+            /* decorate content */
+            content:'aaa';
+            display: block;
+            clear:both;
+        }
+        /* div{
+            clear:both;
+        } */ 
+
+        .demo{
+            width: 200px;
+            height: 100px;
+            background-color: aqua;
+        }
+        .demo::after{
+            content:attr(data-index)
+            /* content:url('/jpag.png') */
+        }
+    </style>
+
+</head>
+<body>
+    <!-- <div class="demo">
+        Demo
+    </div> -->
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <div class='demo' data-index='get attribute value'></div>
+</body>
+</html>

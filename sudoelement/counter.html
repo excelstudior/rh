@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+    body{
+        counter-reset: counter1 0;
+    }
+    h1{
+        counter-increment: counter1 1;
+        counter-reset: counter2 1
+    }
+    h1::before{
+        content:counter(counter1)'.';
+    }
+    h2{
+        counter-increment: counter2 1;
+    }
+    h2::before{
+        content:counter(counter2)'.';
+    }
+    h2::selection{
+        color:cadetblue
+    }
+    h2::first-letter{
+        color: red;
+    }
+    /* first-line */
+
+    </style>
+
+</head>
+<body>
+   <h1>Title-1</h1>
+   <h2>Title-1-1</h2>
+   <h2>Title-1-2</h2>
+   <h2>Title-1-3</h2>
+   <h1>Title-2</h1>
+   <h2>Title-2-1</h2>
+   <h2>Title-2-2</h2>
+   <h2>Title-2-3</h2>
+</body>
+</html>
