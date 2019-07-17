@@ -1,0 +1,28 @@
+display and flex
+
+1 display:flex
+2 flex-direction -- row|column
+3 justify-content -- main-axis align 
+      row:from left to right  start ------> end
+   column: from top to bottom 
+
+     flex-start | flex-end | center | space-between | space-around average, both side avg/2| 
+
+4 align-item
+   perpendicular to justify-content
+
+    flex-start| flex-end | center
+5 flex:1 等比例填满父元素 100px/ 5个元素 20px
+
+rem -- root 动态距离 参照浏览器的宽度 左上角 (font-size)
+em --父元素 8em; /* parent font-size *8*/ 16*8
+px --css 1px 
+rpx --小程序的单位 iphone6 1px=2rpx
+vw --viewport width 1% 5vw  320*5% 16px
+vh --viewport heigh 1%
+%
+
+父容器 vw
+子容器 em
+
+https://aotu.io/notes/2017/04/13/Sticky-footer/index.html

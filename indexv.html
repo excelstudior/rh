@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+        .page-body{
+            display:flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: flex-start;
+            font-size: 5vw;
+            flex-wrap: wrap/*自动换行*/
+        }
+        .page-item{
+            display:flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .page-item img{
+            width: 8em; /* parent font-size *8*/
+            height: 8em;;
+        }
+        .demo{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: flex-start;
+            /* flex-wrap: wrap; */
+            flex:1;
+            white-space: nowrap;
+            /* no wrap 强制不换行 */
+        }
+    </style>
+</head>
+<body>
+   
+    <div class="page-body">
+        <div class="page-item">
+               <img src="small_png.jpg"/>
+            <span>1ddd</span>
+            <span>dddddd</span>
+        </div>
+        <div class="page-item">
+                <img src="small_png.jpg"/>
+                <span>2ddd</span>
+                <span>dddddd</span>
+            </div>
+        <div class="page-item">
+                <img src="small_png.jpg"/>
+            <span>3ddd</span>
+            <span>dddddd</span>
+        </div>
+        <div class="page-item">
+                <img src="small_png.jpg"/>
+            <span>4ddd</span>
+            <span>dddddd</span>
+        </div>   
+
+    </div>
+    <div class="demo">
+        <div>1AAAA</div>
+        <div>2AAAA</div>
+        <div>3AAAA</div>
+        <div>4AAAA</div>
+        <div>5AAAA</div>
+        <div>1AAAA</div>
+        <div>2AAAA</div>
+        <div>3AAAA</div>
+        <div>4AAAA</div>
+        <div>5AAAA</div>
+    </div>
+    
+
+    
+</body>
+</html>
