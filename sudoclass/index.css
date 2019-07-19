@@ -1,0 +1,66 @@
+/* body{
+    background-color:antiquewhite; 
+}
+.container{
+    margin: 0 auto;
+    border-color: solid  black 1px ;
+} */
+li{
+    list-style: none;
+    float: left;
+    width: 100px;
+    height: 60px;
+    line-height: 60px; /*vertival center*/
+    border: 1px solid black;
+    text-align: center;
+
+}
+a{
+    text-decoration: none;
+    font-size: 18px;
+    height: 100%;
+    width: 100%;
+    display: block; /*upgrade to block element, it was line element*/
+}
+li a:link{
+    color: yellowgreen;
+    font-size: 14px;
+    background-color:green;
+}
+/* :visited font-size background-color(not to be set individually :link has to have background color) not to be set*/
+li a:visited{
+    color: red;
+    font-size: 20px;
+    background-color:black;
+}
+li a:hover{
+    color:violet;
+    background-color: orange;
+    font-size: 25px;
+    font-weight: 600;
+}
+li a:active{
+    background-color: aqua;
+    font-size: 30px;
+}
+input:focus{
+    background-color: aquamarine;
+}
+.demo p::first-letter{
+    font-size: 20px;
+    font-weight: 800;
+}
+.demo p::first-line{
+    color:gray;
+}
+.demo p::selection{
+    color:aqua;
+}
+/*全屏的周围*/
+video{
+    width: 500px;
+    height: 300px;
+}
+video ::backdrop{
+    background-color: bisque;
+}
