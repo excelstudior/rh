@@ -1,0 +1,26 @@
+body{
+    background-color:antiquewhite; 
+}
+.container{
+    margin: 0 auto;
+    border-color: solid  black 1px ;
+}
+
+.pager .pager-item{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    display: inline-block;
+    padding:5px 8px;
+    background-color: white;
+    margin: 8px;
+    cursor: pointer;
+    color:black;
+    
+}
+.pager .pager-item.disabled{
+    color:#ccc;
+    cursor:not-allowed;
+}
+.pager .pager-item.active{
+    background-color:grey; 
+    color:white ;
+}
