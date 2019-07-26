@@ -1,0 +1,41 @@
+.box-left{
+    width: 200px;
+    height: 100px;
+    margin:20px 40px;
+    border:5px solid red;
+    float: left;
+    border-radius: 7px;
+    position: relative;
+    padding:0;
+    box-sizing: content-box;
+    background-color: antiquewhite;
+}
+.box-left::after{
+    content: '';
+    border-width: 5px;
+    border-color:transparent transparent antiquewhite antiquewhite;
+    border-style:solid;
+    width: 0;
+    height: 0;
+    top:55px;
+
+    transform:rotate(45deg);
+    position: absolute;
+    margin-left: -5px;
+}
+.box-left::before{
+    content: '';
+    border-width: 10px;
+    border-color:transparent transparent red red;
+    border-style:solid;
+    width: 0;
+    height: 0;
+    top:50px;
+
+    transform:rotate(45deg);
+    position: absolute;
+    margin-left: -10px;
+}
+.box-left blockquote{
+    margin:5px;
+}

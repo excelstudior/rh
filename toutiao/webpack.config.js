@@ -1,14 +1,25 @@
 const path=require('path');
-const uglify=require('uglifyjs-webpack-plugin');
+const UglifyJsPlugin=require('uglifyjs-webpack-plugin');
 const htmlWebpackPlugin=require('html-webpack-plugin');
 const autoprefixer=require('autoprefixer');
 const miniCssExtractPlugin=require('mini-css-extract-plugin');
+const {CleanWebpackPlugin}=require('clean-webpack-plugin');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const config={
     mode:'development',
-    entry:{
-        index:path.resolve(__dirname,'./src/js/index/js')
+    optimization:{
+        minimizer:[
+            new OptimizeCssAssetsPlugin(),
+            new UglifyJsPlugin({
+                cache:true,
+                sourceMap:true
+            })
+        ]
     },
+    entry:{index:["@babel/polyfill",path.resolve(__dirname,'./src/js/index.js')]},
+
     output:{
         path:path.resolve(__dirname+'/dist'),
         filename:'js/[name].js'
@@ -18,10 +29,19 @@ const config={
             {
                 test:/\.js$/,
                 loader:'babel-loader',
-                exclued:path.resolve(__dirname,'node_moudules'),
-                query:{
-                    'preset':['lasest']
+                include:[
+                    path.resolve(__dirname,'src')
+                ],
+                exclude:path.resolve(__dirname,'node_moudules'),
+                options:{
+                    presets:['@babel/preset-env','@babel/preset-react'],
+                    plugins:['@babel/plugin-proposal-class-properties',
+                    "@babel/plugin-transform-runtime",
+                    "@babel/plugin-transform-spread"],
                 }
+                // query:{
+                //     'preset':['lasest']
+                // }
             },
             {
                 test:/\.tpl$/,
@@ -36,7 +56,7 @@ const config={
                         hmr:process.env.NODE_ENV==='development'
                         }   
                     },
-                    'style-loader',
+                    // 'style-loader',///load to style header, miniCssExtractPlugin will be ignored
                     'css-loader',
                     {
                         loader:'postcss-loader',
@@ -57,7 +77,45 @@ const config={
                 ]
             }
         ]
+    },
+    plugins:[
+        new CleanWebpackPlugin(),
+        new CopyWebpackPlugin([
+            { from: './assets' , to: path.resolve(__dirname+'/dist/scripts'), }
+        ]),
+        new htmlWebpackPlugin({
+            filename:'index.html',
+            template:'./src/index.html',
+            title:"Headline",
+            chunksSortMode:"manual",
+            chunks:["index"],
+            excludeChunks:["node-moudules"],
+            hash:true,
+            minify:{
+                removeComments:true,
+                collapseWhitespace:true
+            }
+        }),
+        new miniCssExtractPlugin({
+            filename:'css/[name].css'
+        })
+    ],
+    devtool:'eval-source-map',
+    devServer:{
+        watchOptions:{
+            ignored:'node_moudules'
+        },
+        contentBase:path.resolve(__dirname,"dist"),
+        port:3000,
+        host:'localhost',
+        overlay:true,
+        compress:true,
+        headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
+            "Access-Control-Allow-Headers": "X-Requested-With, content-type, Authorization"
+          }
     }
 
-}
+};
 module.exports=config;
