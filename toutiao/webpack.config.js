@@ -1,4 +1,5 @@
 const path=require('path');
+const webpack=require('webpack');
 const UglifyJsPlugin=require('uglifyjs-webpack-plugin');
 const htmlWebpackPlugin=require('html-webpack-plugin');
 const autoprefixer=require('autoprefixer');
@@ -18,7 +19,11 @@ const config={
             })
         ]
     },
-    entry:{index:["@babel/polyfill",path.resolve(__dirname,'./src/js/index.js')]},
+    entry:{
+        index:[path.resolve(__dirname,'./src/js/index.js')],
+        detail:[path.resolve(__dirname,'./src/js/detail.js')],
+        collections:[path.resolve(__dirname,'./src/js/collections.js')],
+    },
 
     output:{
         path:path.resolve(__dirname+'/dist'),
@@ -79,6 +84,9 @@ const config={
         ]
     },
     plugins:[
+        // new webpack.ProvidePlugin({
+        //     '$':'zepto'
+        // }),
         new CleanWebpackPlugin(),
         new CopyWebpackPlugin([
             { from: './assets' , to: path.resolve(__dirname+'/dist/scripts'), }
@@ -89,6 +97,32 @@ const config={
             title:"Headline",
             chunksSortMode:"manual",
             chunks:["index"],
+            excludeChunks:["node-moudules"],
+            hash:true,
+            minify:{
+                removeComments:true,
+                collapseWhitespace:true
+            }
+        }),
+        new htmlWebpackPlugin({
+            filename:'detail.html',
+            template:'./src/detail.html',
+            title:"Detail",
+            chunksSortMode:"manual",
+            chunks:["detail"],
+            excludeChunks:["node-moudules"],
+            hash:true,
+            minify:{
+                removeComments:true,
+                collapseWhitespace:true
+            }
+        }),
+        new htmlWebpackPlugin({
+            filename:'collections.html',
+            template:'./src/collections.html',
+            title:"Collections",
+            chunksSortMode:"manual",
+            chunks:["collections"],
             excludeChunks:["node-moudules"],
             hash:true,
             minify:{
