@@ -1,22 +1,50 @@
-import '../scss/index.scss'
-import Header from '../components/header/index'
-const header = new Header()
+import '../scss/index.scss';
+import Header from '../components/header/index';
+import Nav from '../components/nav/index';
+import data from '../utils/data';
+
+const header = new Header();
+const nav=new Nav();
+let field='top';
 const App=($)=>{
-    console.log($);
+
     const $app=$('#app');
     const init=()=>{
-        render();
+        render().then(bindEvent);
     }
     const render=()=>{
-        _renderHeader();
+        return new Promise((resolve,reject)=>{
+            _renderHeader();
+            _renderNav(data.news_type);
+            resolve();
+        })
+        
     }
+
+    const bindEvent=()=>{
+        $('.nav .nav-wrapper').on('click','.item',navSelect)
+    }
+
     const _renderHeader=()=>{
-        console.log(header.tpl({
+        $app.append(header.tpl({
             title: 'JS++新闻头条',
-            showLeftIcon: false,
+            showLeftIcon: true,
             showRightIcon: true
-        }));
+        }))
     }
-    init()
+    const _renderNav=(newsType)=>{
+        const tpls=nav.tpl(newsType);
+        console.log(tpls);
+        $app.append(tpls.navStr);
+        $('.nav .nav-wrapper').append(tpls.itemsStr);
+    }
+
+    function navSelect(){
+        const $this=$(this);
+        field=$(this).attr('data-type');
+        $this.addClass('current').siblings('.item').removeClass('current');
+    }
+
+    init();
 }
 App(Zepto);

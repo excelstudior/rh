@@ -12,6 +12,6 @@ export default ()=>{
                     showRightIcon:!options.showRightIcon&& 'none'
                }[key];
             })
-        }
+        },
     }
 }

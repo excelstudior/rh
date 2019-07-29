@@ -84,9 +84,6 @@ const config={
         ]
     },
     plugins:[
-        // new webpack.ProvidePlugin({
-        //     '$':'zepto'
-        // }),
         new CleanWebpackPlugin(),
         new CopyWebpackPlugin([
             { from: './assets' , to: path.resolve(__dirname+'/dist/scripts'), }
