@@ -2,15 +2,29 @@ import '../scss/index.scss';
 import Header from '../components/header/index';
 import Nav from '../components/nav/index';
 import data from '../utils/data';
+import {IndexModel} from '../models/index'
+import NewsItem from '../components/news_item/index';
+import tools from '../utils/tools'
+//initial components
+const header = new Header(),
+      nav=new Nav(),
+      newsItem=new NewsItem();
 
-const header = new Header();
-const nav=new Nav();
+//create data models
+const indexModel=new IndexModel();
+
 let field='top';
+let showCount=10;
 const App=($)=>{
-
-    const $app=$('#app');
+    
+    const $app=$('#app'),
+          $list=$app.children('.list');
     const init=()=>{
         render().then(bindEvent);
+        indexModel.getNewsList(field,showCount).then((res)=>{
+            $list.html(newsItem.tpl(res[0],0));
+            tools.thumbShow($('.news-thumb'))
+        });
     }
     const render=()=>{
         return new Promise((resolve,reject)=>{
@@ -43,6 +57,10 @@ const App=($)=>{
         const $this=$(this);
         field=$(this).attr('data-type');
         $this.addClass('current').siblings('.item').removeClass('current');
+        indexModel.getNewsList(field,showCount).then((res)=>{
+            $list.html(newsItem.tpl(res[0],0));
+            tools.thumbShow($('.news-thumb'))
+        });
     }
 
     init();
