@@ -10,5 +10,5 @@ function thumbShow(dom){
 
 module.exports={
   tplReplace,
-  thumbShow
+  thumbShow,
 }

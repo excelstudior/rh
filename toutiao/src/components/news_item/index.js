@@ -37,10 +37,7 @@ export default () => {
                         title:item.title
                     }[key]
                 })
-               
             }); 
-
-            console.log('new',list)
             return list
         }
     }

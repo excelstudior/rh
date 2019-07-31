@@ -55,13 +55,13 @@ const config={
             {
                 test:/\.scss$/,
                 use:[
-                    {
-                        loader:miniCssExtractPlugin.loader,
-                        options:{
-                        hmr:process.env.NODE_ENV==='development'
-                        }   
-                    },
-                    // 'style-loader',///load to style header, miniCssExtractPlugin will be ignored
+                    // {
+                    //     loader:miniCssExtractPlugin.loader,
+                    //     options:{
+                    //     hmr:process.env.NODE_ENV==='development'
+                    //     }   
+                    // },
+                    'style-loader',///load to style header, miniCssExtractPlugin will be ignored
                     'css-loader',
                     {
                         loader:'postcss-loader',
@@ -75,7 +75,7 @@ const config={
                 ]
             },
             {
-                test:/\.(png|jpg|jpeg|git|ico)$/i,
+                test:/\.(png|jpg|jpeg|gif|ico)$/i,
                 loader:[
                     'url-loader?limit=1024&name=img/[name]-[hash:16].[ext]',
                     'image-webpack-loader'
@@ -127,9 +127,9 @@ const config={
                 collapseWhitespace:true
             }
         }),
-        new miniCssExtractPlugin({
-            filename:'css/[name].css'
-        })
+        // new miniCssExtractPlugin({
+        //     filename:'css/[name].css'
+        // })
     ],
     devtool:'eval-source-map',
     devServer:{
