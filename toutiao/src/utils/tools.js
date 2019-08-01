@@ -6,15 +6,16 @@ function thumbShow(dom) {
     $(this).css('opacity', 1);
   })
 }
-function scrollToBottom(callback){
-  if(_getScrollTop()+_getWindowHeight()===_getScrollHeight()){
+function scrollToBottom(callback) {
+  if (typeof (callback) != 'function') { console.log(callback + ' is not a function'); return }
+  if (_getScrollTop() + _getWindowHeight() === _getScrollHeight()) {
     callback()
   }
 }
 module.exports = {
   tplReplace,
   thumbShow,
-  scrollToBottom
+  scrollToBottom,
 }
 
 //private function
