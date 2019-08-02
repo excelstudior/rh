@@ -1,0 +1,53 @@
+<!-- https://makandracards.com/makandra/55801-does-html-or-body-scroll-the-page -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+       
+        body{
+           background:green;
+        }
+
+    </style>
+</head>
+
+<body>
+      <p id='content'>
+          <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, quam excepturi harum doloribus ex accusamus quaerat nulla fugit quo repellendus accusantium magnam, iure numquam quod consequatur perspiciatis, quasi earum aspernatur.</span>
+          <span>Quasi dolore consequuntur accusantium tenetur odio alias, exercitationem amet nesciunt unde. Libero, cum laboriosam adipisci fuga, animi ipsa aut eaque ipsum enim voluptate atque ipsam eligendi cupiditate iusto magnam natus!</span>
+          <span>Sequi incidunt laudantium blanditiis magni temporibus fuga aperiam minus magnam optio velit. Voluptates sequi necessitatibus saepe non quibusdam praesentium officiis, facilis consectetur eos quia reiciendis, qui vel dolores? Magni, esse?</span>
+          <span>Incidunt fugiat in placeat est tenetur cum vel id expedita repellat facilis? Impedit sunt consequatur quia, ab aliquid ipsa odio, repellendus consequuntur inventore, dolorem labore et veniam amet commodi fugiat.</span>
+          <span>Animi sint laboriosam vitae necessitatibus alias perferendis debitis magnam eum quibusdam quae aliquid minus unde totam laudantium aliquam ex possimus autem praesentium, quam asperiores ea id cumque! Pariatur, quidem vel!</span>
+          <span>Suscipit quos repudiandae assumenda in, voluptatum unde velit blanditiis omnis at dolore cumque. Assumenda vero delectus nihil voluptates nisi fugit, dolorem, recusandae nesciunt corrupti, minima maiores omnis nemo tempora numquam.</span>
+          <span>Delectus, pariatur? Explicabo odit amet, dignissimos aut, quam voluptas ab atque inventore et tenetur quasi. Fugiat eum ipsam odio vitae? Aliquid quia eius laborum voluptatem vel itaque consequuntur at accusamus.</span>
+          <span>Veniam numquam ipsam omnis nobis iure reiciendis nemo magni recusandae facilis voluptate alias consequuntur qui explicabo odio veritatis amet optio, fugiat dolor ratione excepturi. Blanditiis accusamus aspernatur exercitationem unde porro!</span>
+          <span>Eligendi esse a similique repellat eum dolorum fugit modi quisquam totam veritatis! Impedit at totam, ad cupiditate corrupti unde excepturi in. Nesciunt quia officiis deleniti enim ducimus, corrupti laboriosam dolores!</span>
+          <span>Quas ratione non quidem repellat incidunt est, iure possimus labore fuga nisi illum officia nobis dignissimos repellendus, inventore voluptas ex ipsam vero, dolorum impedit omnis. Recusandae provident cupiditate alias harum.</span>
+      </p>
+</body>
+<script>
+    window.onscroll=function(){
+        showMessages();
+    }
+
+    function showMessages(){
+        var docBodyScrollTop=document.body.scrollTop; //body tag
+        var rootOfDocScrollTop=document.documentElement.scrollTop //html tag
+        var bodyHeight=document.body.clientHeight
+        var htmlHeight=document.documentElement.clientHeight
+        var message='Body ScrollTop is'+docBodyScrollTop+' and '+'Html Scrolltop is '+rootOfDocScrollTop
+        var message1='Body Client height is '+bodyHeight+'.Html Client Height is '+htmlHeight
+        var scrolllingElement=document.scrollingElement;
+        var pScrollHeight=document.getElementById('content').scrollHeight;
+        console.log(message,message1)
+        console.log(message,message1,scrolllingElement,pScrollHeight)
+    }
+    
+</script>
+<script src="tools.js" type="text/javascript"></script>
+</html>
