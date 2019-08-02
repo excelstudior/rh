@@ -12,10 +12,18 @@ function scrollToBottom(callback) {
     callback()
   }
 }
+
+function scrollToWindowTop(delay){
+  setTimeout(() => {
+    window.scrollTo(0,0);
+  }, delay);
+}
+
 module.exports = {
   tplReplace,
   thumbShow,
   scrollToBottom,
+  scrollToWindowTop
 }
 
 //private function

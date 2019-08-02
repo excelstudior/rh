@@ -32,7 +32,7 @@ const App = ($, win) => {
         $window = $(win),
         $list = $app.children('.list'),
         loadMoreNewsItems = tools.scrollToBottom.bind(null, handleScrollToBottom);
-    console.log(loadMoreNewsItems, handleScrollToBottom)
+
     const init = () => {
         render(field).then(bindEvent);
     }
@@ -103,18 +103,17 @@ const App = ($, win) => {
 
     }
     const _postListRender=(shouldBindScrollEvent)=>{
-        bindWindowScrollEvent(shouldBindScrollEvent);
+        _bindWindowScrollEvent(shouldBindScrollEvent);
         tools.thumbShow($('.news-thumb'));
     }
     const _renderPageLoading = () => {
         $list.html('');
         $app.append(pageLoading.tpl());
     }
-    const bindWindowScrollEvent = (isBind) => {
+    const _bindWindowScrollEvent = (isBind) => {
         isBind ? $window.on('scroll', loadMoreNewsItems)
             : $window.off('scroll', loadMoreNewsItems);
     }
-
     const _handleBottomTip = (action, isLoading, text) => {
         switch (action) {
             case 'append':
@@ -134,7 +133,7 @@ const App = ($, win) => {
 
     function handleScrollToBottom() {
         
-        bindWindowScrollEvent(false)
+        _bindWindowScrollEvent(false)
         if(pageNum<pageCount-1){
             _handleBottomTip('append','loading','More to come...')
             
@@ -145,17 +144,32 @@ const App = ($, win) => {
             }, 2000);
 
         } else {
-            _handleBottomTip('end','','End of the thread...')
+            _handleBottomTip('end','','Back to top');
+            $('.bottom-tip').on('click',function(){
+                win.scrollTo(0,0)
+            })
+
         }
         
     }
     // update nav bar selected items
 
     function navSelect() {
+        resetLoadingParameters();
         const $this = $(this);
         field = $(this).attr('data-type');
         $this.addClass('current').siblings('.item').removeClass('current');
         _renderList(field,showCount);
+    }
+
+    function resetLoadingParameters(){ 
+      //  tools.scrollToWindowTop(0);
+        win.scrollTo(0,0);
+        pageNum=0;
+        _handleBottomTip('remove');
+        _bindWindowScrollEvent('false');
+        
+       
     }
 
     init();
