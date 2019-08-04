@@ -23,3 +23,18 @@ console.log(newArrayWithOtherContent())
 // IamTheCallback()
 // needACallBack(IamTheCallback);
 needACallBack.bind(null,IamTheCallback)()
+
+class Ball {
+   constructor(){
+       this.x=12;
+       this.y=14;
+       this.foo=this.foo.bind(this)
+
+   }
+   foo(){
+       return 'ddd'
+   }
+}
+ 
+var ball=new Ball();
+console.log()
