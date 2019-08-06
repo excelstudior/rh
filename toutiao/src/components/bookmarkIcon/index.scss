@@ -5,11 +5,12 @@
     z-index:3;
     width: 2rem;
     height: 2rem;
-    
+    background-size:2rem 2rem;
+    background-image: url(../../images/star_o.png) ;
     background-repeat: no-repeat;
     background-position: 0 0;
-    
-    &.marked {
-        background-image:url(../../images/star_full.png);
+    &.marked{
+        background-image: url(../../images/icons8-star-filled-48.png) ;
     }
+   
 }

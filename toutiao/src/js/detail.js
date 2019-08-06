@@ -14,14 +14,24 @@ const App = ($) => {
         $newsFrame = $('.frame-wrapper'),
         newsUrl = tools.getUrlQueryValue('news_url'),
         uniquekey = tools.getUrlQueryValue('uniquekey');
+    
+    let  bookmarks=JSON.parse(localStorage.getItem('bookmarks'))||{},
+         marked;
+         bookmarks[uniquekey]===undefined ? marked='':marked='marked';
+
     const init = () => {
-       
-        render();
+        render().then(bindEvent);
     }
     const render = () => {
-        _renderHeader();
-        _renderNewsDetail(newsUrl);
-        _renderBookmarkIcon();
+        return new Promise((resolve,reject)=>{
+            _renderHeader();
+            _renderNewsDetail(newsUrl);
+            _renderBookmarkIcon(marked);
+            resolve()
+        })
+    }
+    const bindEvent = () =>{
+        $('.bookmarkIcon').on('click',toggleBookmark);  
     }
     const _renderHeader = () => {
         $app.append(header.tpl({
@@ -33,8 +43,19 @@ const App = ($) => {
     const _renderNewsDetail = (targetUrl) => {
         $newsFrame.append(newsDetail.tpl(targetUrl))
     }
-    const _renderBookmarkIcon = () => {
-        $app.append(bookmarkIcon.tpl(''))  
+    const _renderBookmarkIcon = (isMarked) => {
+        $app.append(bookmarkIcon.tpl(isMarked));
+        
+    }
+    function toggleBookmark(){
+        
+        if(bookmarks[uniquekey]){
+            delete bookmarks[uniquekey];
+        }else{
+            bookmarks[uniquekey]=JSON.parse(localStorage.getItem('target'));
+        }
+        localStorage.setItem('bookmarks',JSON.stringify(bookmarks));
+         $('.bookmarkIcon').toggleClass('marked');
     }
 
     init();
