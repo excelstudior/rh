@@ -47,14 +47,15 @@ const App = ($, win) => {
     }
 
     const bindEvent = () => {
-        $('.nav .nav-wrapper').on('click', '.item', navSelect)
+        $('.nav .nav-wrapper').on('click', '.item', navSelect);
+        $list.on('click','.news-item',showNewsDetail);// event bubble and event delegate
     }
 
     const _renderHeader = () => {
         $app.append(header.tpl({
             title: 'JS++新闻头条',
-            showLeftIcon: true,
-            showRightIcon: true
+            showLeftIcon: false,
+            showRightIcon: false
         }))
     }
 
@@ -170,6 +171,18 @@ const App = ($, win) => {
         _bindWindowScrollEvent('false');
         
        
+    }
+
+    function showNewsDetail(){
+        const $this=$(this),
+              url=$this.attr('data-url'),
+              idx=$this.attr('data-index'),
+              pageNum=$this.attr('data-page'),
+              uniquekey=$this.attr('data-uniquekey');
+        console.log(dataCache[field][pageNum][idx])
+        //save data to localStorage
+        localStorage.setItem('target',JSON.stringify(dataCache[field][pageNum][idx]))
+        window.location.href=`detail.html?news_url=${url}&uniquekey=${uniquekey}`
     }
 
     init();

@@ -13,17 +13,24 @@ function scrollToBottom(callback) {
   }
 }
 
-function scrollToWindowTop(delay){
+function scrollToWindowTop(delay) {
   setTimeout(() => {
-    window.scrollTo(0,0);
+    window.scrollTo(0, 0);
   }, delay);
 }
 
+function getUrlQueryValue(key) {
+  const reg = new RegExp('(^|&)' + key + '=([^&]*)(&|$)', 'i'),
+    res = window.location.search.substr(1).match(reg)[2];
+    console.log('res ',res)
+  return res != null ? decodeURIComponent(res) : null;
+}
 module.exports = {
   tplReplace,
   thumbShow,
   scrollToBottom,
-  scrollToWindowTop
+  scrollToWindowTop,
+  getUrlQueryValue
 }
 
 //private function

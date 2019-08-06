@@ -1,4 +1,5 @@
-class Detail extends Component {
+import { HTTP } from '../utils/http';
+class Detail extends HTTP {
     
 }
  

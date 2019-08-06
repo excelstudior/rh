@@ -6,8 +6,6 @@ export default ()=>{
         name:'header',
         tpl(options){
             return tpl().replace(tools.tplReplace(),(node,key)=>{
-                console.log('node is ',node)
-                console.log('key is ',key)
                 return{
                     title:options.title,
                     showLeftIcon:!options.showLeftIcon&&'none',

@@ -1,0 +1,15 @@
+.bookmarkIcon{
+    position: fixed;
+    top:1rem;
+    right: 1rem;
+    z-index:3;
+    width: 2rem;
+    height: 2rem;
+    
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    
+    &.marked {
+        background-image:url(../../images/star_full.png);
+    }
+}
