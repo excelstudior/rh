@@ -1,7 +1,7 @@
 import '../scss/bookmarks.scss'
 import Header from '../components/header/index';
 import NewsItem from '../components/news_item/index';
-
+import tools from '../utils/tools';
 const header = new Header();
 const newsItem = new NewsItem();
 const App = ($) => {
@@ -32,16 +32,12 @@ const App = ($) => {
     const _renderList = () => {
         if (bookmarks!=null){
             let bookmarkIds=Object.keys(bookmarks);
-
             let bookmarkItems=[];
             bookmarkIds.forEach((id,index)=>{
                 bookmarkItems.push(bookmarks[id])
             })
-
-            console.log(bookmarkItems)
-          
             $list.html(newsItem.tpl(bookmarkItems,0))
-          
+            tools.thumbShow($('.news-thumb'))
         } 
         
     }
