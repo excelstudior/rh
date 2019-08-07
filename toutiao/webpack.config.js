@@ -20,9 +20,9 @@ const config={
         ]
     },
     entry:{
-        index:[path.resolve(__dirname,'./src/js/index.js')],
-        detail:[path.resolve(__dirname,'./src/js/detail.js')],
-        collections:[path.resolve(__dirname,'./src/js/collections.js')],
+        index:path.resolve(__dirname,'./src/js/index.js'),
+        detail:path.resolve(__dirname,'./src/js/detail.js'),
+        bookmarks:path.resolve(__dirname,'./src/js/bookmarks.js')
     },
 
     output:{
@@ -115,11 +115,11 @@ const config={
             }
         }),
         new htmlWebpackPlugin({
-            filename:'collections.html',
-            template:'./src/collections.html',
-            title:"Collections",
+            filename:'bookmarks.html',
+            template:'./src/bookmarks.html',
+            title:"Bookmarks",
             chunksSortMode:"manual",
-            chunks:["collections"],
+            chunks:["bookmarks"],
             excludeChunks:["node-moudules"],
             hash:true,
             minify:{

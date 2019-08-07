@@ -8,7 +8,7 @@
 		<h1>{{title}}</h1>
 	</div>
 	<div class="icon right">
-		<a href="collections.html">
+		<a href="bookmarks.html">
 			<img src="${require('../../images/follow.png')}" class="img-icon" style="display: {{showRightIcon}}" />
 		</a>
 	</div>

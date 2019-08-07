@@ -55,7 +55,7 @@ const App = ($, win) => {
         $app.append(header.tpl({
             title: 'JS++新闻头条',
             showLeftIcon: false,
-            showRightIcon: false
+            showRightIcon: true
         }))
     }
 
