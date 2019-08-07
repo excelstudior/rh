@@ -86,7 +86,7 @@ const config={
     plugins:[
         new CleanWebpackPlugin(),
         new CopyWebpackPlugin([
-            { from: './assets' , to: path.resolve(__dirname+'/dist/scripts'), }
+            { from: './src/scripts' , to: path.resolve(__dirname+'/dist/scripts'), }
         ]),
         new htmlWebpackPlugin({
             filename:'index.html',
