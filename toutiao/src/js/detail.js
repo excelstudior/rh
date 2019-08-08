@@ -37,7 +37,8 @@ const App = ($) => {
         $app.append(header.tpl({
             title: '详情',
             showLeftIcon: true,
-            showRightIcon: false
+            showRightIcon: false,
+            showHomeIcon:false
         }))
     }
     const _renderNewsDetail = (targetUrl) => {

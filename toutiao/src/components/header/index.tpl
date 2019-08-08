@@ -11,5 +11,8 @@
 		<a href="bookmarks.html">
 			<img src="${require('../../images/follow.png')}" class="img-icon" style="display: {{showRightIcon}}" />
 		</a>
+		<a href="index.html">
+			<img src="${require('../../images/icons8-home-24.png')}" class="img-icon" style="display: {{showHomeIcon}}" />
+		</a>
 	</div>
 </header>

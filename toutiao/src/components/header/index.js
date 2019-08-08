@@ -9,7 +9,8 @@ export default ()=>{
                 return{
                     title:options.title,
                     showLeftIcon:!options.showLeftIcon&&'none',
-                    showRightIcon:!options.showRightIcon&& 'none'
+                    showRightIcon:!options.showRightIcon&& 'none',
+                    showHomeIcon:!options.showHomeIcon&& 'none'
                }[key];
             })
         },
