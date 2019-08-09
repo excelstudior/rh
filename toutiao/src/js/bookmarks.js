@@ -2,13 +2,19 @@ import '../scss/bookmarks.scss'
 import Header from '../components/header/index';
 import NewsItem from '../components/news_item/index';
 import tools from '../utils/tools';
+import EmptyContentTip from '../components/emptyContent_tip/index';
+
+// initial components
 const header = new Header();
 const newsItem = new NewsItem();
+const emptyContentTip= new EmptyContentTip();
+
+// initial app
 const App = ($) => {
     const $app = $('#app'),
         $list = $app.children('.list'),
         bookmarks = JSON.parse(localStorage.getItem('bookmarks')),
-        bookmarkItems=createBookmarkItems(bookmarks);
+        bookmarkItems=bookmarks !=null?createBookmarkItems(bookmarks):[];
     console.log(bookmarks);
     const init = () => {
         render().then(bintEvent);
@@ -32,10 +38,13 @@ const App = ($) => {
         }))
     }
     const _renderList = (items) => {
-        if (bookmarks!=null){
+        console.log(bookmarks)
+        if (bookmarks==null || (bookmarks!=null && Object.keys(bookmarks).length===0)){
+            $list.append(emptyContentTip.tpl("没有收藏内容"))
+        } else {
             $list.html(newsItem.tpl(items,0))
             tools.thumbShow($('.news-thumb'))
-        } 
+        }
         
     }
 
