@@ -37,4 +37,4 @@ class Ball {
 }
  
 var ball=new Ball();
-console.log()
+console.log(ball)

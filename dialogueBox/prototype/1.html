@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="textDiv"></div>
+    <button id="btn1">Click</button>
+</body>
+<script>
+    // 要显示的对象，对象包含NAME属性
+    var textNode = [
+        { name:"Text1" },
+        { name:"Text2" },
+        { name:"Text3" }
+    ];
+
+    //拿到DOM元素
+    var textDiv=document.getElementById('textDiv');
+    var btn=document.getElementById('btn1');
+    
+    // 提取对象中的NAME值， 转为数组
+    var textArr=textNode.map((item,i)=>{
+        return item.name
+    })
+
+    //记录当前位置 
+    var currentPos=0;
+        // console.log(textArr);
+
+    //循环的上限    
+    var limit=textArr.length;
+
+    //邦定事件 
+    btn.onclick=function(){
+        //如果到了循环的上限，从新来
+        if(currentPos>=limit){
+            currentPos=0
+        }
+        //清空
+        textDiv.innerHTML='';
+        //再生成新的
+        let node=document.createTextNode(textArr[currentPos])
+            textDiv.append(node);
+            currentPos++; 
+    }
+</script>
+
+</html>

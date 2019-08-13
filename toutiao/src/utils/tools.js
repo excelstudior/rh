@@ -19,11 +19,21 @@ function scrollToWindowTop(delay) {
   }, delay);
 }
 
+// function getUrlQueryValue(key) {
+//   const reg = new RegExp('(^|&)' + key + '=([^&]*)(&|$)', 'i'),
+//     res = window.location.search.substr(1).match(reg)[2];
+//     console.log('res ',res)
+//   return res != null ? decodeURIComponent(res) : null;
+// }
+
 function getUrlQueryValue(key) {
-  const reg = new RegExp('(^|&)' + key + '=([^&]*)(&|$)', 'i'),
-    res = window.location.search.substr(1).match(reg)[2];
-    console.log('res ',res)
-  return res != null ? decodeURIComponent(res) : null;
+  let searchParam=new URLSearchParams(window.location.search);
+  if(searchParam==='') return null;
+  for(var pair of searchParam){
+    if (pair[0]===key){
+      return pair[1]!=null?decodeURIComponent(pair[1]):null
+    }
+  }
 }
 module.exports = {
   tplReplace,
