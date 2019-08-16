@@ -1,0 +1,10 @@
+## Color
+#### dropdown
+ - seperation boarder bottom | 1px solid #d0d3d9
+ - font-size | 100%
+ - font-family | "Larsseit", sans-serif
+ - font-color | #3c475b #fff
+ - font-color visited | #7e8594
+ - background | #0ea800
+ - padding | 10px 0
+ - box-shadow | 0 1px 3px 0 rgba(7,25,57,.1), 0 1px 2px 0 rgba(7,25,57,.2)

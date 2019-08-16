@@ -1,0 +1,16 @@
+#navbarWrapper{
+    position: relative;
+    height: 32px;
+    border-bottom: 1px solid #d0d3d9;
+}
+#navbar{
+        position: absolute;
+    }
+#logo{
+    position:absolute;
+    display: block;
+    width: 32px;
+    height: 32px;
+    background: url("../../../../images/InspectHomeMag52.png");
+
+}
