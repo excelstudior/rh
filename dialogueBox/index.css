@@ -40,3 +40,11 @@
     margin:5px;
     text-align: center
 }
+p{
+    height: 20px;
+    line-height: 30px;
+    font-size:18px;
+    margin:0;
+    padding:0;
+    text-indent: 2rem;
+}
