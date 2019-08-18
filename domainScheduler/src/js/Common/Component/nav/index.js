@@ -9,12 +9,12 @@ class NavBar extends Component {
             <div id="navbarWrapper">
                 <div id="narbar">
                     <div id="logo"></div>
+                    <h1 id='brand'>Home Inspector</h1>
                     <div>
-                        <ul>
-                            <li><a href=""></a></li>
-                            <li><a href=""></a></li>
-                            <li><a href=""></a></li>
-                            <li><a href=""></a></li>
+                        <ul id='menu'>
+                            <li className='menuItem'><span>Schedule</span></li>
+                            <li className='menuItem'><a href="">Agents</a></li>
+                            <li className='menuItem'><span className="fa fa-user"></span></li>
                         </ul>
                     </div>
                 </div>

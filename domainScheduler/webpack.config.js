@@ -17,12 +17,11 @@ const config={
             new OptimizeCssAssetsPlugin(),
             new UglifyJsPlugin({
                 cache:true,
-                sourceMap:true
+               // sourceMap:true
             })
         ]
     },
     entry:{
-        // 'babel-polyfill':'@babel/polyfill',
         index:path.resolve(__dirname,'./src/index.js')
     },
 
@@ -44,7 +43,8 @@ const config={
                     plugins:['@babel/plugin-proposal-class-properties',
                     "@babel/plugin-transform-runtime",
                     "@babel/plugin-transform-spread",
-                    "@babel/plugin-syntax-dynamic-import"],
+                    //"@babel/plugin-syntax-dynamic-import"
+                ],
                 }
                 // query:{
                 //     'preset':['lasest']
@@ -55,7 +55,7 @@ const config={
                 loader:'ejs-loader'
             },
             {
-                test:/\.(scss|css)$/,
+                test:/\.css$/,
                 use:[
                     {
                         loader:miniCssExtractPlugin.loader,
@@ -65,35 +65,42 @@ const config={
                     },
                     //'style-loader',///load to style header, miniCssExtractPlugin will be ignored
                     'css-loader',
-                    {
-                        loader:'postcss-loader',
-                        options:{
-                            plugins:function(){
-                                return[autoprefixer('last 5 versions')]
-                            }
-                        }
-                    },
-                    'sass-loader'
+                    // {
+                    //     loader:'postcss-loader',
+                    //     options:{
+                    //         plugins:function(){
+                    //             return[autoprefixer('last 5 versions')]
+                    //         }
+                    //     }
+                    // },
+                    // 'sass-loader'
                 ]
             },
             {
                 test:/\.(png|jpg|jpeg|gif|ico)$/i,
-                loader:[
-                    'url-loader?limit=1024&name=/images/[name][hash].[ext]',
-                    'image-webpack-loader'
-                ]
+                use:{
+                    loader:'file-loader'
+                    ,options:{
+                        outputPath:'images'
+                    }
+                }
+                // loader:[
+                //     'url-loader?limit=1024&name=/images/[name][hash].[ext]',
+                //     'image-webpack-loader'
+                // ]
             }
         ]
     },
     plugins:[
         new CleanWebpackPlugin(),
         new CopyWebpackPlugin([
-            { from: './src/images' , to: path.resolve(__dirname+'/dist/images'), }
+            { from: './src/favicon.ico' , to: path.resolve(__dirname+'/dist'), }
         ]),
         new htmlWebpackPlugin({
             filename:'index.html',
             template:'./src/index.html',
             title:"Home Inspector",
+            favicon: './src/favicon.ico',
             chunksSortMode:"manual",
             chunks:["index"],
             excludeChunks:["node-moudules"],
@@ -104,10 +111,10 @@ const config={
             }
         }),
         new miniCssExtractPlugin({
-            filename:'css/[name].css'
+            filename:'[name].css'
         })
     ],
-    devtool:'eval-source-map',
+   // devtool:'eval-source-map',
     devServer:{
         watchOptions:{
             ignored:'node_moudules'
