@@ -11,9 +11,9 @@
 
 ## Configs
  - Domain API 
-   1 Create a folder name **configs** and a file call **keys.js**. 
-   2 In **keys.js** export the following and fill ***xxx*** with your domain api client_id and ***yyy*** with your domain api client_secret 
+   1. Create a folder name **configs** and a file call **keys.js**. 
+   2. In **keys.js** export the following and fill ***xxx*** with your domain api client_id and ***yyy*** with your domain api client_secret 
     ``` export const domainClient={
-        client_id:'',
-        client_secret:''} 
+        client_id:'xxx',
+        client_secret:'yyy'} 
     ```
