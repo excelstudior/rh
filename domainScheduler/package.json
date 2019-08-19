@@ -53,6 +53,7 @@
     "react-router-dom": "^5.0.1",
     "react-transition-group": "^4.2.1",
     "redux": "^4.0.4",
+    "redux-api-middleware": "^3.0.1",
     "redux-thunk": "^2.3.0",
     "sass-loader": "^7.1.0",
     "source-map-explorer": "^2.0.1"
