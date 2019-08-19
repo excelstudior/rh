@@ -39,3 +39,6 @@
 .menuItem{
     padding-left:16px;
 }
+.menuItem img{
+    display:block;
+}

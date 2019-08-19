@@ -99,7 +99,7 @@ const config={
         new htmlWebpackPlugin({
             filename:'index.html',
             template:'./src/index.html',
-            title:"Home Inspector",
+            title:"House Inspector",
             favicon: './src/favicon.ico',
             chunksSortMode:"manual",
             chunks:["index"],
@@ -114,13 +114,13 @@ const config={
             filename:'[name].css'
         })
     ],
-    devtool:'eval-source-map',
+    //devtool:'cheap-source-map',
     devServer:{
         watchOptions:{
             ignored:'node_moudules'
         },
         contentBase:path.resolve(__dirname,"dist"),
-        port:3000,
+        port:8080,
         host:'localhost',
         overlay:true,
         compress:true,
