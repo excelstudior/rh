@@ -17,7 +17,7 @@ const config={
             new OptimizeCssAssetsPlugin(),
             new UglifyJsPlugin({
                 cache:true,
-               // sourceMap:true
+                sourceMap:true
             })
         ]
     },
