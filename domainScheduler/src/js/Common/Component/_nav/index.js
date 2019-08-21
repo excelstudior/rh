@@ -44,6 +44,7 @@ class NavBar extends Component {
                     <h1 id='brand'>House Inspector</h1>
                     <div>
                         <ul id='menu'>
+                        <li className='menuItem'><span>{this.props.apis.domain.toString()}</span></li>
                             <li className='menuItem'><span>Schedule</span></li>
                             <li className='menuItem'><a href="">Agents</a></li>
                             <li className='menuItem'><img src={apis.domain?apiOn:api} onClick={this.toggleConnectToDomainApi}></img></li>

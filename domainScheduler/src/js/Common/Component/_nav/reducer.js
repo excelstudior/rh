@@ -9,6 +9,7 @@ const initialState = {
     }
 }
 const nav = (state = initialState, action) => {
+    console.log(action.payloads)
     switch (action.type) {
         case TOGGLE_APIS:
             switch (action.payloads.apiName) {

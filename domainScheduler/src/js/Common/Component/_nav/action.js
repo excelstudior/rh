@@ -1,5 +1,5 @@
 import { DOMAIN } from '../../Apis/Domain/Endpoint/domain';
-import { connectApi } from '../../../Common/Utils/auth/connectApi';
+import { connectApi } from '../../Utils/auth/connectApi';
 
 export const CONNECTED_DOMAIN_API='CONNECT_DOMAIN_API';
 export const TOGGLE_APIS='TOGGLE_APIS';
