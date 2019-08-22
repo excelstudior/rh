@@ -2,7 +2,9 @@ import { DOMAIN } from '../../Apis/Domain/Endpoint/domain';
 import { TOGGLE_API_SWITCH } from './action';
 
 const initialState={
-    domain:false
+    domain:false,
+    message:{ type:'',
+              content:'' }
 }
 const apiSwitch = ( state=initialState,action) => {
     switch (action.type){

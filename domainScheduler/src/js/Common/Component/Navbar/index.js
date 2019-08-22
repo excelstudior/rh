@@ -7,16 +7,6 @@ import { toggleApiSwitch,connectToDomain } from './action';
 import { DOMAIN } from '../../Apis/Domain/Endpoint/domain';
 
 class Navbar extends Component {
-
-    // render() { 
-    //     const domainConnected=this.props.domain
-    //     return ( <div>
-    //         This is a Switch
-    //         <span>{domainConnected.toString()}</span>
-    //         <span onClick={this.props.toggleApiSwitch}>Click</span>
-    //         <span onClick={this.props.connectToDomainApi}>Connect to Domain</span>
-    //     </div> )
-    // }
     render() { 
         const { domain,connectToDomainApi }=this.props
         return ( 
