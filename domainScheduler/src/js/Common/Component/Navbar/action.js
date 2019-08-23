@@ -1,4 +1,5 @@
 import { DOMAIN } from '../../Apis/Domain/Endpoint/domain';
+import { isConnectingToApi } from '../../Apis/Utils/tool';
 import { connectApi } from '../../Utils/auth/connectApi';
 
 export const TOGGLE_API_SWITCH='TOGGLE_API_SWITCH';
@@ -6,26 +7,38 @@ export const ERROR='ERROR';
 export const INFO='INFO';
 
 export const connectToDomain = () => {
-    return (dispatch)=>{
-        if (localStorage.getItem('DomainApi')!==null){
-            console.log ('Connected to Domain Api');
+    return (dispatch) => {
+        if ( isConnectingToApi( DOMAIN )){
+            alert ('Connected to Domain Api');
             return;
         }
-        connectApi( DOMAIN ).
-            then(result=>signInDomainSuccess(result,dispatch)) 
+        connectApi( DOMAIN ).then(result=>signInDomainSuccess(result,dispatch)) 
+            .catch((error)=>processError(error))
     } 
+}
+export const disconnectToDomain = () => {
+    return (dispatch) => {
+        if ( isConnectingToApi( DOMAIN )){
+            localStorage.removeItem( DOMAIN );
+            dispatch(toggleApiSwitch( DOMAIN ));
+        } else {
+            alert ('Disconnected from Domain Api')
+        }
+    }
 }
 const signInDomainSuccess = (result,dispatch) => {
     //set local storage item
     console.log(result)
-    localStorage.setItem ('DomainApi',JSON.stringify(result.data));
-    dispatch(toggleApiSwitch(DOMAIN))
+    localStorage.setItem ( DOMAIN,JSON.stringify(result.data));
+    dispatch(toggleApiSwitch( DOMAIN ))
 }
-const signInDomainError = (error,dispatch) =>{
+const processError = (error) => {
     console.log (error)
-    dispatch()
+    alert(error.data.err||error);
 }
-export const toggleApiSwitch = (apiName) =>({
+
+
+const toggleApiSwitch = (apiName) => ({
     type:TOGGLE_API_SWITCH,
     payloads:apiName
 })

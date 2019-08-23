@@ -1,12 +1,13 @@
-import { DOMAIN } from '../../Apis/Domain/Endpoint/domain';
+import { DOMAIN, DOMAIN_TIMEOUT } from '../../Apis/Domain/Endpoint/domain';
+import { isConnectingToApi } from '../../Apis/Utils/tool';
 import { TOGGLE_API_SWITCH } from './action';
 
 const initialState={
-    domain:false,
+    domain:isConnectingToApi(DOMAIN),
     message:{ type:'',
               content:'' }
 }
-const apiSwitch = ( state=initialState,action) => {
+const navbar = ( state=initialState,action) => {
     switch (action.type){
         case TOGGLE_API_SWITCH:
             switch (action.payloads){
@@ -16,10 +17,12 @@ const apiSwitch = ( state=initialState,action) => {
                 default:
                     return state
             }
-            
+        case DOMAIN_TIMEOUT:
+            alert ( 'Domain Api is disconnected' )
+            return { ...state, domain:false }
         default:
             return state
     } 
 }
 
-export default apiSwitch
+export default navbar

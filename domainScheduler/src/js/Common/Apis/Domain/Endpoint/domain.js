@@ -9,3 +9,4 @@ export const DOMAIN_AUTH_SCOPE='api_addresslocators_read api_agencies_read api_d
  * Constants
  *  */
 export const DOMAIN='DOMAIN';
+export const DOMAIN_TIMEOUT='DOMAIN_TIMEOUT';

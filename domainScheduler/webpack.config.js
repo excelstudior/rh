@@ -99,7 +99,7 @@ const config={
         new htmlWebpackPlugin({
             filename:'index.html',
             template:'./src/index.html',
-            title:"House Inspector",
+            title:"Inspection Planner",
             favicon: './src/favicon.ico',
             chunksSortMode:"manual",
             chunks:["index"],
