@@ -10,3 +10,9 @@ export const DOMAIN_AUTH_SCOPE='api_addresslocators_read api_agencies_read api_d
  *  */
 export const DOMAIN='DOMAIN';
 export const DOMAIN_TIMEOUT='DOMAIN_TIMEOUT';
+
+/**
+ * API root and version
+*/
+export const DOMAIN_ROOT_API='https://api.domain.com.au/'
+export const DOMAIN_API_VERSION='v1/'
