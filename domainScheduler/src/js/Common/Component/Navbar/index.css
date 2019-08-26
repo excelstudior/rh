@@ -42,3 +42,13 @@
 .menuItem img{
     display:block;
 }
+.menuItem input{
+    font-size: 16px;
+    border-radius: 16px;
+    border: none;
+    padding: 4px 36px 4px 14px;
+}
+.menuItem input+span{
+    margin-left:-30px;
+    color:#0ea800;
+}

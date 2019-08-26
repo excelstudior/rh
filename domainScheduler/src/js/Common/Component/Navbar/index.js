@@ -4,7 +4,7 @@ import api from '../../../../images/ApiConnect.png';
 import apiOn from '../../../../images/ApiOn.png';
 import { connect } from 'react-redux';
 import { connectToDomain,disconnectToDomain } from './action';
-import { getAgentsByName } from '../Agent/action';
+import { getAgenciesByName, setAgentSearchCriteria } from '../Agent/action';
 import { DOMAIN } from '../../Apis/Domain/Endpoint/domain';
 
 const ApiSwitch = ({image,OnClick})  => {
@@ -28,8 +28,8 @@ class Navbar extends Component {
     }
     searchAgentByName =()=>{
         let agentName=this.agentNameToSearch.current.value
-        let criteria=new Map([name,agentName])
-        this.props.searchAgentByName(agentName,criteria)
+        let criteria='name:"'+agentName+'"';
+        this.props.searchAgentByName(criteria,)
     }
 
     render() { 
@@ -71,6 +71,9 @@ const mapStateToProps = (state) =>{
 const mapDispatchToProps = (dispatch) =>({
     connectToDomainApi:()=>dispatch(connectToDomain(DOMAIN)),
     disconnectToDomainApi:()=>dispatch(disconnectToDomain(DOMAIN)),
-    searchAgentByName:(agentName)=>dispatch(getAgentsByName(agentName))
+    searchAgentByName:(criteria)=>{
+        dispatch(setAgentSearchCriteria(criteria))
+        dispatch(getAgenciesByName(criteria))
+    }
 })
 export default connect(mapStateToProps,mapDispatchToProps)(Navbar);

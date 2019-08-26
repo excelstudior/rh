@@ -16,3 +16,8 @@ export const DOMAIN_TIMEOUT='DOMAIN_TIMEOUT';
 */
 export const DOMAIN_ROOT_API='https://api.domain.com.au/'
 export const DOMAIN_API_VERSION='v1/'
+
+/**
+ * Agencies details
+ */
+export const AGENCIES_DETAILS_DOMAIN_ROOT='https://www.domain.com.au/real-estate-agencies/';
