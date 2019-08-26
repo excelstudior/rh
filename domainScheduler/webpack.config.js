@@ -119,7 +119,7 @@ const config={
         watchOptions:{
             ignored:'node_moudules'
         },
-        contentBase:path.resolve(__dirname,"dist"),
+        // contentBase:path.resolve(__dirname,"dist"),
         port:8080,
         host:'localhost',
         overlay:true,

@@ -19,10 +19,17 @@ class Navbar extends Component {
         super(props);
         this.agentNameToSearch=React.createRef();
     }
+    // shouldComponentUpdate(){
+
+    // }
+
+    handleAgentNameToSearchChange = () =>{
+        this.agentNameToSearch.current.value=event.target.value
+    }
     searchAgentByName =()=>{
-        let name=this.agentNameToSearch.current.value
-        console.log(name);
-        this.props.searchAgentByName('Ray White Mascot')
+        let agentName=this.agentNameToSearch.current.value
+        let criteria=new Map([name,agentName])
+        this.props.searchAgentByName(agentName,criteria)
     }
 
     render() { 
@@ -37,7 +44,9 @@ class Navbar extends Component {
                             <li className='menuItem'><span>Schedule</span></li>
                             <li className='menuItem'><a href="">Agents</a></li>
                             <li className='menuItem'>
-                                <input ref={this.agentNameToSearch} placeholder='Find an agent' value='YesOrNo'/>
+                                <input ref={this.agentNameToSearch} 
+                                       placeholder='Find an agent' 
+                                       onChange={this.handleAgentNameToSearchChange}/>
                                 <span className='fa fa-search' onClick={this.searchAgentByName}></span>
                             </li>
                             {domain

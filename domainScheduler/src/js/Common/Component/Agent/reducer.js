@@ -8,7 +8,7 @@ const agentInfo = (state=initialState,action) =>{
     switch (action.type){
         case GET_AGENTS_BY_NAME_SUCCESS:
             console.log(action)
-            return state
+            return {...state,Agents:action.payload}
         case GET_AGENTS_BY_NAME_FAILURE:
             console.log(action)
             return state
