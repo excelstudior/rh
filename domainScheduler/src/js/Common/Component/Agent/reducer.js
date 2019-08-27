@@ -1,6 +1,6 @@
-import { GET_AGENTS_BY_NAME_REQUEST,
-    GET_AGENTS_BY_NAME_SUCCESS, 
-    GET_AGENTS_BY_NAME_FAILURE,
+import { 
+    GET_AGENCIES_SUCCESS, 
+    GET_AGENCIES_FAILURE,
     SET_AGENT_SEARCH_CRITERIA } from '../Agent/action';
 
 const initialState={
@@ -15,10 +15,10 @@ const agentInfo = (state=initialState,action) =>{
         case SET_AGENT_SEARCH_CRITERIA:
             console.log(action.payload)
             return { ...state,SearchCriteria:action.payload }
-        case GET_AGENTS_BY_NAME_SUCCESS:
+        case GET_AGENCIES_SUCCESS:
             console.log(action)
             return { ...state,Agents:action.payload }
-        case GET_AGENTS_BY_NAME_FAILURE:
+        case GET_AGENCIES_FAILURE:
             console.log(action)
             return state
         default:

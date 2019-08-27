@@ -4,7 +4,7 @@ import api from '../../../../images/ApiConnect.png';
 import apiOn from '../../../../images/ApiOn.png';
 import { connect } from 'react-redux';
 import { connectToDomain,disconnectToDomain } from './action';
-import { getAgenciesByName, setAgentSearchCriteria } from '../Agent/action';
+import { getAgencies, setAgentSearchCriteria } from '../Agent/action';
 import { DOMAIN } from '../../Apis/Domain/Endpoint/domain';
 
 const ApiSwitch = ({image,OnClick})  => {
@@ -29,7 +29,7 @@ class Navbar extends Component {
     searchAgentByName =()=>{
         let agentName=this.agentNameToSearch.current.value
         let criteria='name:"'+agentName+'"';
-        this.props.searchAgentByName(criteria,)
+        this.props.searchAgentByName(criteria)
     }
 
     render() { 
@@ -45,7 +45,7 @@ class Navbar extends Component {
                             <li className='menuItem'><a href="">Agents</a></li>
                             <li className='menuItem'>
                                 <input ref={this.agentNameToSearch} 
-                                       placeholder='Find an agent' 
+                                       placeholder='Find agencies' 
                                        onChange={this.handleAgentNameToSearchChange}/>
                                 <span className='fa fa-search' onClick={this.searchAgentByName}></span>
                             </li>
@@ -73,7 +73,7 @@ const mapDispatchToProps = (dispatch) =>({
     disconnectToDomainApi:()=>dispatch(disconnectToDomain(DOMAIN)),
     searchAgentByName:(criteria)=>{
         dispatch(setAgentSearchCriteria(criteria))
-        dispatch(getAgenciesByName(criteria))
+        dispatch(getAgencies(criteria))
     }
 })
 export default connect(mapStateToProps,mapDispatchToProps)(Navbar);
