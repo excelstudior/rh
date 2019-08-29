@@ -1,23 +1,23 @@
 import { 
     GET_AGENCIES_SUCCESS, 
     GET_AGENCIES_FAILURE,
-    SET_AGENT_SEARCH_CRITERIA } from '../Agent/action';
+    SET_AGENCY_SEARCH_CRITERIA } from './action';
 
 const initialState={
-    Agents:[],
+    Agencies:[],
     SearchCriteria:'',
     PageNumber:0,
     PageSize:20,
-    SelectedAgent:{}
+    SelectedAgency:{}
 }
-const agentInfo = (state=initialState,action) =>{
+const agencyInfo = (state=initialState,action) =>{
     switch (action.type){
-        case SET_AGENT_SEARCH_CRITERIA:
+        case SET_AGENCY_SEARCH_CRITERIA:
             console.log(action.payload)
             return { ...state,SearchCriteria:action.payload }
         case GET_AGENCIES_SUCCESS:
             console.log(action)
-            return { ...state,Agents:action.payload }
+            return { ...state,Agencies:action.payload }
         case GET_AGENCIES_FAILURE:
             console.log(action)
             return state
@@ -25,4 +25,4 @@ const agentInfo = (state=initialState,action) =>{
             return state
     }
 }
-export default agentInfo
+export default agencyInfo

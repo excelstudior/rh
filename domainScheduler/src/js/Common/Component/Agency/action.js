@@ -1,16 +1,15 @@
 import { DOMAIN_ROOT_API,DOMAIN_API_VERSION,DOMAIN } from '../../Apis/Domain/Endpoint/domain';
 import { callApi } from '../../Apis/Utils/tool';
-import queryString from 'querystring';
 /**
  * Connect to Domain Endpoints
  */
 /**
- * Search for agents by name.
+ * Search for agency.
  */
 export const GET_AGENCIES_REQUEST='GET_AGENCIES_REQUEST';
 export const GET_AGENCIES_SUCCESS='GET_AGENCIES_SUCCESS';
 export const GET_AGENCIES_FAILURE='GET_AGENCIES_FAILURE';
-export const SET_AGENT_SEARCH_CRITERIA='SET_AGENT_SEARCH_CRITERIA';
+export const SET_AGENCY_SEARCH_CRITERIA='SET_AGENCY_SEARCH_CRITERIA';
 /**
  * @param {string} criteria 
  * @param {number} pageNumber 
@@ -31,7 +30,7 @@ export const getAgencies = (criteria, pageNumber = 0, pageSize = 20) =>{
 export const getAgencyDetails = () =>{
     
 }
-export const setAgentSearchCriteria = (criteria) =>({
-    type:SET_AGENT_SEARCH_CRITERIA,
+export const setAgencySearchCriteria = (criteria) =>({
+    type:SET_AGENCY_SEARCH_CRITERIA,
     payload:criteria
 })

@@ -3,7 +3,7 @@
     /* padding-left:16px;
     padding-right:16px; */
     height: 32px;
-    padding:10px;
+    padding:16px;
     color:#fff;
     background-color:#0ea800;
     /* border-bottom: 1px solid #d0d3d9; */
@@ -46,7 +46,7 @@
     font-size: 16px;
     border-radius: 16px;
     border: none;
-    padding: 4px 36px 4px 14px;
+    padding: 6px 36px 6px 14px;
 }
 .menuItem input+span{
     margin-left:-30px;
