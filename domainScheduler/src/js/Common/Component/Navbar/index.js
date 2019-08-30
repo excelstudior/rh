@@ -41,8 +41,6 @@ class Navbar extends Component {
                     <h1 id='brand'>Inspection Planner</h1>
                     <div>
                         <ul id='menu'>
-                            <li className='menuItem'><span>Schedule</span></li>
-                            <li className='menuItem'><a href="">Agents</a></li>
                             <li className='menuItem'>
                                 <input ref={this.agentNameToSearch} 
                                        placeholder='Find agencies' 

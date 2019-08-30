@@ -17,7 +17,7 @@ html, body, div, span, applet, object, iframe,
         
         font-size: 100%;
         font: inherit;
-        vertical-align: middle;
+        vertical-align: baseline;
     }
     article, aside, details, figcaption, figure, 
     footer, header, hgroup, menu, nav, section {
@@ -26,6 +26,7 @@ html, body, div, span, applet, object, iframe,
     body {
         line-height: 1;
         font-family:sans-serif,Tahoma,'Segoe UI', Verdana ;
+        background-color:#ebedf0;
     }
     ol, ul {
         list-style: none;

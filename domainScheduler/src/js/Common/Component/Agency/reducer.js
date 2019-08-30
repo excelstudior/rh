@@ -1,7 +1,8 @@
 import { 
     GET_AGENCIES_SUCCESS, 
     GET_AGENCIES_FAILURE,
-    SET_AGENCY_SEARCH_CRITERIA } from './action';
+    SET_AGENCY_SEARCH_CRITERIA,
+    UPDATE_AGENCIES_PAGENUMBER } from './action';
 
 const initialState={
     Agencies:[],
@@ -21,6 +22,8 @@ const agencyInfo = (state=initialState,action) =>{
         case GET_AGENCIES_FAILURE:
             console.log(action)
             return state
+        case UPDATE_AGENCIES_PAGENUMBER:
+            return { ...state,PageNumber:state.PageNumber++}    
         default:
             return state
     }

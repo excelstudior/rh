@@ -5,7 +5,7 @@
     height: 32px;
     padding:16px;
     color:#fff;
-    background-color:#0ea800;
+    background-color:#0ea800 ;
     /* border-bottom: 1px solid #d0d3d9; */
 }
 #navbar{
@@ -44,7 +44,7 @@
 }
 .menuItem input{
     font-size: 16px;
-    border-radius: 16px;
+    /* border-radius: 16px; */
     border: none;
     padding: 6px 36px 6px 14px;
 }

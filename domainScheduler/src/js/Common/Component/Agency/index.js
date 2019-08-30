@@ -5,8 +5,12 @@ class Agencies extends Component {
     state = {  }
     render() { 
         return ( 
-            <div id='agencies'>
-Agencies
+            <div id='agenciesWrapper'>
+                {/* Filters */}
+                Agencies
+                <div id="menu"></div>
+                <div id="agencies-list-fixed-header"></div>
+                {/* Pagination */}
             </div>
          )
     }

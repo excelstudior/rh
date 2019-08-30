@@ -1,4 +1,6 @@
-#agencies{
-    background-color:#eceef0;
+#agenciesWrapper{
+    /* background-color:#eceef0; */
+    position: relative;
+    margin:0 20px;
     
 }
