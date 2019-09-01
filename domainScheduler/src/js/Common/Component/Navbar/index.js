@@ -27,9 +27,17 @@ class Navbar extends Component {
         this.agentNameToSearch.current.value=event.target.value
     }
     searchAgentByName =()=>{
+        if (this.props.agencyInfo.PagesLoaded){
+            //need to add some logic to show popup
+            return false
+        }
         let agentName=this.agentNameToSearch.current.value
         let criteria='name:"'+agentName+'"';
-        this.props.searchAgentByName(criteria)
+        console.log(this.props.agencyInfo)
+
+
+        let pageNumber=this.props.agencyInfo.NextPageNumber;
+        this.props.searchAgentByName(criteria,pageNumber)
     }
 
     render() { 
@@ -62,16 +70,16 @@ class Navbar extends Component {
 const mapStateToProps = (state) =>{
     return {
         domain:state.navbar.domain,
-        agentInfo:state.agentInfo
+        agencyInfo:state.agencyInfo
     }
 }
 
 const mapDispatchToProps = (dispatch) =>({
     connectToDomainApi:()=>dispatch(connectToDomain(DOMAIN)),
     disconnectToDomainApi:()=>dispatch(disconnectToDomain(DOMAIN)),
-    searchAgentByName:(criteria)=>{
+    searchAgentByName:(criteria,pageNumber)=>{
         dispatch(setAgencySearchCriteria(criteria))
-        dispatch(getAgencies(criteria))
+        dispatch(getAgencies(criteria,pageNumber))
     }
 })
 export default connect(mapStateToProps,mapDispatchToProps)(Navbar);

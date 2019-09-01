@@ -13,17 +13,18 @@ export const SET_AGENCY_SEARCH_CRITERIA='SET_AGENCY_SEARCH_CRITERIA';
 export const UPDATE_AGENCIES_PAGENUMBER='UPDATE_AGENCIES_PAGENUMBER';
 /**
  * @param {string} criteria 
- * @param {number} pageNumber 
+ * @param {number} nextPageNumber 
  * @param {number} pageSize 
  * GET /v1/agencies
  */
 export const updateAgenciesPageNumber = ()=>({
     type:UPDATE_AGENCIES_PAGENUMBER
 })
-export const getAgencies = (criteria, pageNumber = 0, pageSize = 20) =>{
+export const getAgencies = (criteria, nextPageNumber = 1, pageSize = 20) =>{
     let endpoint=DOMAIN_ROOT_API+DOMAIN_API_VERSION+'agencies';
+    console.log ('in getAgencies page Number Pass in ',nextPageNumber)
     let data={ q:criteria,
-               pageNumber,
+               PageNumber:nextPageNumber,
                pageSize }
     let types=[ GET_AGENCIES_REQUEST,
                 GET_AGENCIES_SUCCESS,

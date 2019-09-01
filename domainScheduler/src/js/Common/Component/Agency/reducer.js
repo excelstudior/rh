@@ -7,9 +7,10 @@ import {
 const initialState={
     Agencies:[],
     SearchCriteria:'',
-    PageNumber:0,
+    NextPageNumber:1,
     PageSize:20,
-    SelectedAgency:{}
+    SelectedAgency:{},
+    PagesLoaded:false
 }
 const agencyInfo = (state=initialState,action) =>{
     switch (action.type){
@@ -18,12 +19,20 @@ const agencyInfo = (state=initialState,action) =>{
             return { ...state,SearchCriteria:action.payload }
         case GET_AGENCIES_SUCCESS:
             console.log(action)
-            return { ...state,Agencies:action.payload }
+            console.log ('On success ', { ...state,Agencies:[...state.Agencies,action.payload],NextPageNumber:state.NextPageNumber++ })
+            console.log('payload ',action.payload.length)
+            if(action.payload.length!==0){
+                return { ...state,Agencies:[...state.Agencies,action.payload],NextPageNumber:state.NextPageNumber++ }
+            } else {
+                return {...state, PagesLoaded: true}
+            }
+
+            
         case GET_AGENCIES_FAILURE:
             console.log(action)
             return state
         case UPDATE_AGENCIES_PAGENUMBER:
-            return { ...state,PageNumber:state.PageNumber++}    
+            return { ...state,NextPageNumber:state.NextPageNumber++}    
         default:
             return state
     }
