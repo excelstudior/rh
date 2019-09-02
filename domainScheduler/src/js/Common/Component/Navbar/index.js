@@ -3,8 +3,8 @@ import './index.css';
 import api from '../../../../images/ApiConnect.png';
 import apiOn from '../../../../images/ApiOn.png';
 import { connect } from 'react-redux';
-import { connectToDomain,disconnectToDomain } from './action';
-import { getAgencies, setAgencySearchCriteria } from '../Agency/action';
+import { connectToDomain,disconnectToDomain, testGetAgencies } from './action';
+import { getAgencies, resetAgencySearchCriteria } from '../Agency/action';
 import { DOMAIN } from '../../Apis/Domain/Endpoint/domain';
 
 const ApiSwitch = ({image,OnClick})  => {
@@ -22,7 +22,11 @@ class Navbar extends Component {
     // shouldComponentUpdate(){
 
     // }
-
+    //need to remove
+    test=()=>{
+        testGetAgencies();
+    }
+    //need to remove end
     handleAgentNameToSearchChange = () =>{
         this.agentNameToSearch.current.value=event.target.value
     }
@@ -33,11 +37,17 @@ class Navbar extends Component {
         }
         let agentName=this.agentNameToSearch.current.value
         let criteria='name:"'+agentName+'"';
-        console.log(this.props.agencyInfo)
+        // console.log(this.props.agencyInfo)
+        if (criteria==this.props.agencyInfo.SearchCriteria){
+            let pageNumber=this.props.agencyInfo.NextPageNumber;
+            this.props.searchAgentByName(criteria,pageNumber)
+            return
+        } else {
+            this.props.resetCriteriaAndSearchAgencies(criteria,1)
+        }
 
 
-        let pageNumber=this.props.agencyInfo.NextPageNumber;
-        this.props.searchAgentByName(criteria,pageNumber)
+        
     }
 
     render() { 
@@ -58,7 +68,7 @@ class Navbar extends Component {
                             {domain
                             ?<ApiSwitch image={apiOn} OnClick={disconnectToDomainApi}/>
                             :<ApiSwitch image={api} OnClick={connectToDomainApi}/>}
-                            <li className='menuItem'><span className="fa fa-user"></span></li>
+                            <li className='menuItem'><span className="fa fa-user" onClick={this.test}></span></li>
                         </ul>
                     </div>
                 </div>
@@ -78,7 +88,11 @@ const mapDispatchToProps = (dispatch) =>({
     connectToDomainApi:()=>dispatch(connectToDomain(DOMAIN)),
     disconnectToDomainApi:()=>dispatch(disconnectToDomain(DOMAIN)),
     searchAgentByName:(criteria,pageNumber)=>{
-        dispatch(setAgencySearchCriteria(criteria))
+        // dispatch(resetAgencySearchCriteria(criteria))
+        dispatch(getAgencies(criteria,pageNumber))
+    },
+    resetCriteriaAndSearchAgencies:(criteria,pageNumber)=>{
+        dispatch(resetAgencySearchCriteria(criteria))
         dispatch(getAgencies(criteria,pageNumber))
     }
 })

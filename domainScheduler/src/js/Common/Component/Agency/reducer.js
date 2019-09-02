@@ -2,7 +2,7 @@ import {
     GET_AGENCIES_SUCCESS, 
     GET_AGENCIES_FAILURE,
     SET_AGENCY_SEARCH_CRITERIA,
-    UPDATE_AGENCIES_PAGENUMBER } from './action';
+} from './action';
 
 const initialState={
     Agencies:[],
@@ -15,24 +15,21 @@ const initialState={
 const agencyInfo = (state=initialState,action) =>{
     switch (action.type){
         case SET_AGENCY_SEARCH_CRITERIA:
-            console.log(action.payload)
-            return { ...state,SearchCriteria:action.payload }
+           
+            return { ...initialState,SearchCriteria:action.payload }
         case GET_AGENCIES_SUCCESS:
-            console.log(action)
-            console.log ('On success ', { ...state,Agencies:[...state.Agencies,action.payload],NextPageNumber:state.NextPageNumber++ })
-            console.log('payload ',action.payload.length)
+            // console.log(action)
+            // console.log ('On success ', { ...state,Agencies:[...state.Agencies,action.payload],NextPageNumber:state.NextPageNumber++ })
+            // console.log('payload ',action.payload.length)
             if(action.payload.length!==0){
                 return { ...state,Agencies:[...state.Agencies,action.payload],NextPageNumber:state.NextPageNumber++ }
             } else {
-                return {...state, PagesLoaded: true}
+                return {...state, PagesLoaded: true,NextPageNumber:1}
             }
-
             
         case GET_AGENCIES_FAILURE:
-            console.log(action)
-            return state
-        case UPDATE_AGENCIES_PAGENUMBER:
-            return { ...state,NextPageNumber:state.NextPageNumber++}    
+            // console.log(action)
+            return state  
         default:
             return state
     }

@@ -5,7 +5,7 @@ import './index.css';
 class Agencies extends Component {
     render() { 
         const { agencyInfo }=this.props;
-        console.log(agencyInfo)
+        // console.log(agencyInfo)
         return ( 
             <div id='agenciesWrapper'>
                 {/* Filters */}

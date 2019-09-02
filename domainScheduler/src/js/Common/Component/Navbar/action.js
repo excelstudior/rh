@@ -1,7 +1,16 @@
 import { DOMAIN } from '../../Apis/Domain/Endpoint/domain';
 import { isConnectingToApi } from '../../Apis/Utils/tool';
 import { connectApi } from '../../Utils/auth/connectApi';
-
+/**
+ * Test Data Retriever
+ */
+import { getAllAgencies } from '../../Apis/DataRetriever/agency'
+export const testGetAgencies = () =>{
+    getAllAgencies()
+}
+ /**
+  * Test Data Retriver End
+  */
 
 export const TOGGLE_API_SWITCH='TOGGLE_API_SWITCH';
 export const ERROR='ERROR';

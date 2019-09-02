@@ -20,4 +20,5 @@ export const DOMAIN_API_VERSION='v1/'
 /**
  * Agencies details
  */
+export const DOMAIN_AGENCIES='agencies';
 export const AGENCIES_DETAILS_DOMAIN_ROOT='https://www.domain.com.au/real-estate-agencies/';
