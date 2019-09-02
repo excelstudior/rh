@@ -4,9 +4,9 @@ import { connectApi } from '../../Utils/auth/connectApi';
 /**
  * Test Data Retriever
  */
-import { getAllAgencies } from '../../Apis/DataRetriever/agency'
+import { getAllAgenciesPromise } from '../../Apis/DataRetriever/agency'
 export const testGetAgencies = () =>{
-    getAllAgencies()
+    getAllAgenciesPromise().then((res)=>console.log(res))
 }
  /**
   * Test Data Retriver End

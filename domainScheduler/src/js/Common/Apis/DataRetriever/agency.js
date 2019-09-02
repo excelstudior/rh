@@ -2,7 +2,14 @@ import request from './request';
 import * as Endpoint from '../Domain/Endpoint/domain';
 import querystring from 'querystring';
 
-export const getAllAgencies = (criteria='name:"Ray White"', pageNumber = 1, pageSize = 100,data=[]) =>{
+export const getAllAgenciesPromise = (criteria='name:"Ray White"', pageNumber = 1, pageSize = 100,data=[]) =>{
+    return new Promise ((resolve,reject)=>{
+       let agencies =getAllAgencies(criteria, pageNumber, pageSize,data);
+       resolve(agencies);
+    })
+}
+
+const getAllAgencies = (criteria='name:"Ray White"', pageNumber = 1, pageSize = 100,data=[]) =>{
     let nextPageNumber=pageNumber;
     let agencies=data;
     getAgencies( criteria, nextPageNumber, pageSize )
@@ -18,7 +25,7 @@ export const getAllAgencies = (criteria='name:"Ray White"', pageNumber = 1, page
     return agencies
 }
 
-export const getAgencies = (criteria='name:"Ray White"', pageNumber = 1, pageSize = 20) =>{
+const getAgencies = (criteria='name:"Ray White"', pageNumber = 1, pageSize = 20) =>{
     //****** */ handle error 
     //if (criteria===undefined) { alert ('Criteria missing'); return}
     //get rid of criteria default value

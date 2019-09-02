@@ -3,6 +3,7 @@ import { DOMAIN_ROOT_API,
     DOMAIN,
     DOMAIN_AGENCIES } from '../../Apis/Domain/Endpoint/domain';
 import { callApi } from '../../Apis/Utils/tool';
+import { getAllAgenciesPromise } from '../../Apis/DataRetriever/agency';
 /**
  * Connect to Domain Endpoints
  */
@@ -24,6 +25,10 @@ export const SET_AGENCIES_SEARCH_PAGENUMBER='SET_AGENCIES_SEARCH_PAGENUMBER';
 export const setAgenciesPageNumber = ()=>({
     type:SET_AGENCIES_SEARCH_PAGENUMBER
 })
+export const resetAgencySearchCriteria = (criteria) =>({
+    type:SET_AGENCY_SEARCH_CRITERIA,
+    payload:criteria
+})
 export const getAgencies = (criteria, pageNumber = 1, pageSize = 20) =>{
     let endpoint=DOMAIN_ROOT_API+DOMAIN_API_VERSION+DOMAIN_AGENCIES;
     console.log ('in getAgencies page Number Pass in ',pageNumber)
@@ -39,7 +44,3 @@ export const getAgencies = (criteria, pageNumber = 1, pageSize = 20) =>{
 export const getAgencyDetails = () =>{
     
 }
-export const resetAgencySearchCriteria = (criteria) =>({
-    type:SET_AGENCY_SEARCH_CRITERIA,
-    payload:criteria
-})
