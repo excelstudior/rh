@@ -4,7 +4,7 @@ import api from '../../../../images/ApiConnect.png';
 import apiOn from '../../../../images/ApiOn.png';
 import { connect } from 'react-redux';
 import { connectToDomain,disconnectToDomain, testGetAgencies } from './action';
-import { getAgencies, resetAgencySearchCriteria } from '../Agency/action';
+import { getAgencies, resetAgencySearchCriteria, getAllAgencies } from '../Agency/action';
 import { DOMAIN } from '../../Apis/Domain/Endpoint/domain';
 
 const ApiSwitch = ({image,OnClick})  => {
@@ -90,6 +90,7 @@ const mapDispatchToProps = (dispatch) =>({
     searchAgentByName:(criteria,pageNumber)=>{
         // dispatch(resetAgencySearchCriteria(criteria))
         dispatch(getAgencies(criteria,pageNumber))
+        //dispatch(getAllAgencies(criteria))
     },
     resetCriteriaAndSearchAgencies:(criteria,pageNumber)=>{
         dispatch(resetAgencySearchCriteria(criteria))

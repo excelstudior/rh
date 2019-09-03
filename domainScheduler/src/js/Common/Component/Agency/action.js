@@ -41,6 +41,18 @@ export const getAgencies = (criteria, pageNumber = 1, pageSize = 20) =>{
     return callApi(endpoint,'GET',types,data,DOMAIN)
 }
 
+export const getAllAgencies = ( criteria, pageNumber, pageSize ) =>{
+    return ( dispatch ) =>{
+        getAllAgenciesPromise( criteria, pageNumber, pageSize )
+        .then(( agencies )=>{
+          dispatch( getAllAgenciesSuccess( agencies ) )   
+        })
+    }   
+}
+export const getAllAgenciesSuccess = ( agencies ) =>({
+    type:GET_AGENCIES_SUCCESS,
+    payload:agencies
+})
 export const getAgencyDetails = () =>{
     
 }
