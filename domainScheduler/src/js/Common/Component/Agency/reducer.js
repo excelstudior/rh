@@ -28,7 +28,12 @@ const agencyInfo = (state=initialState,action) =>{
             }
             
         case GET_AGENCIES_FAILURE:
-            // console.log(action)
+            //need to put this in message component action
+            let response=Object.keys(action.payload)
+            for ( var pro in response ) {
+                let prop=response[pro]
+                console.log (prop+' : '+action.payload[prop])
+            }
             return state  
         default:
             return state

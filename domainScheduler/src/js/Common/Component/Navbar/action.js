@@ -43,6 +43,13 @@ export const disconnectToDomain = () => {
 const signInDomainSuccess = (result,dispatch) => {
     //set local storage item
     console.log(result)
+    let currentDateTime=new Date();
+    let expires_in=new Date();
+    expires_in.setTime((result.data.expires_in)*1000+currentDateTime.getTime())
+
+    console.log(expires_in)
+    // console.log(expires_in.getTime())
+    result.data.expires_in=expires_in
     localStorage.setItem ( DOMAIN,JSON.stringify(result.data));
     dispatch(toggleApiSwitch( DOMAIN ))
 }

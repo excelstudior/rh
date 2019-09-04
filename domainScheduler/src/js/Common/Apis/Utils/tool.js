@@ -2,7 +2,12 @@ import queryString from 'query-string';
 import { RSAA } from 'redux-api-middleware';
 import { DOMAIN_TIMEOUT } from '../Domain/Endpoint/domain';
 export const isConnectingToApi = (apiName) => {
-    return localStorage.getItem(apiName)!==null;
+    let api= localStorage.getItem(apiName);
+    if ( api === null ){
+        return false;
+    }
+    let expires_in=new Date(JSON.parse(api).expires_in);
+    return Date.now()<expires_in.getTime()? true : false
 }
 
 export function callApi(endpoint,method,types,data,apiName) {

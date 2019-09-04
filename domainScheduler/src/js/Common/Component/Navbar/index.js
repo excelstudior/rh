@@ -3,8 +3,8 @@ import './index.css';
 import api from '../../../../images/ApiConnect.png';
 import apiOn from '../../../../images/ApiOn.png';
 import { connect } from 'react-redux';
-import { connectToDomain,disconnectToDomain, testGetAgencies } from './action';
-import { getAgencies, resetAgencySearchCriteria, getAllAgencies } from '../Agency/action';
+import { connectToDomain,disconnectToDomain,is, testGetAgencies } from './action';
+import { getAgencies, resetAgencySearchCriteria } from '../Agency/action';
 import { DOMAIN } from '../../Apis/Domain/Endpoint/domain';
 
 const ApiSwitch = ({image,OnClick})  => {
@@ -27,6 +27,12 @@ class Navbar extends Component {
         testGetAgencies();
     }
     //need to remove end
+
+    componentDidMount () {
+        if ( localStorage.getItem(DOMAIN) != null && this.props.domain === false ) {
+            localStorage.removeItem (DOMAIN)
+        }
+    }
     handleAgentNameToSearchChange = () =>{
         this.agentNameToSearch.current.value=event.target.value
     }

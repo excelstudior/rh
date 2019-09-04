@@ -3,7 +3,7 @@ import { DOMAIN_ROOT_API,
     DOMAIN,
     DOMAIN_AGENCIES } from '../../Apis/Domain/Endpoint/domain';
 import { callApi } from '../../Apis/Utils/tool';
-import { getAllAgenciesPromise } from '../../Apis/DataRetriever/agency';
+
 /**
  * Connect to Domain Endpoints
  */
@@ -40,19 +40,6 @@ export const getAgencies = (criteria, pageNumber = 1, pageSize = 20) =>{
                 GET_AGENCIES_FAILURE ]
     return callApi(endpoint,'GET',types,data,DOMAIN)
 }
-
-export const getAllAgencies = ( criteria, pageNumber, pageSize ) =>{
-    return ( dispatch ) =>{
-        getAllAgenciesPromise( criteria, pageNumber, pageSize )
-        .then(( agencies )=>{
-          dispatch( getAllAgenciesSuccess( agencies ) )   
-        })
-    }   
-}
-export const getAllAgenciesSuccess = ( agencies ) =>({
-    type:GET_AGENCIES_SUCCESS,
-    payload:agencies
-})
 export const getAgencyDetails = () =>{
     
 }
