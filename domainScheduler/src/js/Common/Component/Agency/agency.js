@@ -6,7 +6,15 @@ class Agency extends Component {
     render() { 
         const { name } = this.props
         return ( 
-            <div> {name}</div>
+            <div className='agency-item'> 
+                <div className='agency-name'>
+                   <span>{name}</span>  
+                </div>
+                <div className='agency-link'>
+                    <a><span>Link2</span></a>
+                    <a>Link1</a>
+                </div>
+            </div>
          )
     }
 }

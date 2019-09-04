@@ -1,0 +1,12 @@
+.left{
+    float:left;
+}
+.right{
+    float: right;
+}
+.show{
+    display: block;
+}
+.hide{
+    display: none;
+}

@@ -2,5 +2,30 @@
     /* background-color:#eceef0; */
     position: relative;
     margin:0 20px;
+}
+#agencies-list{
+    /* display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-content: center;
+    flex-wrap: wrap; */   
     
+}
+.agency-item{
+    /* display:flex; */
+    position: relative;
+    margin: 5px;
+    padding: 5px;
+    background-color:#fff;
+    font-size: 12px;
+    line-height: 
+}
+.agency-name{
+    display: inline;
+    color:#333333;
+    font-weight: 600;
+}
+.agency-link{
+    display: inline;
+    margin-right: 0;
 }

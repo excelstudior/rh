@@ -12,6 +12,7 @@ class Agencies extends Component {
                 
                 <div id="menu"></div>
                 <div id="agencies-list-fixed-header"></div>
+                <div id="agencies-list">
                 { agencyInfo.Agencies.map((item,index)=>{
                    return item.map((agency,index)=>{
                         return  <Agency name={agency.name} key={index}/>
@@ -19,6 +20,8 @@ class Agencies extends Component {
 
                    
                 })}
+                </div>
+                
                 {/* Pagination */}
             </div>
          )
