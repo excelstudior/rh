@@ -10,3 +10,8 @@
 .hide{
     display: none;
 }
+.dataLoader{
+    width: 100%;
+    color: #0ea800;
+    text-align: center
+}

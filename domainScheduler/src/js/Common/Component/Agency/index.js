@@ -1,8 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Agency from './agency';
+import DataLoader from '../Common/DataLoader/DataLoader';
 import './index.css';
+import { getAgencies } from './action';
+
 class Agencies extends Component {
+
+    retrieveAgencies = () => {
+        let { NextPageNumber, SearchCriteria } = this.props.agencyInfo;
+        console.log('conn');
+        this.props.loadNextPage ( SearchCriteria, NextPageNumber );
+    }
     render() { 
         const { agencyInfo }=this.props;
         // console.log(agencyInfo)
@@ -15,13 +24,20 @@ class Agencies extends Component {
                 <div id="agencies-list">
                 { agencyInfo.Agencies.map((item,index)=>{
                    return item.map((agency,index)=>{
-                        return  <Agency name={agency.name} key={index}/>
+                        return  <Agency name={agency.name} 
+                                        suburb={agency.suburb}
+                                        state={agency.state}
+                                        address1={agency.address1}
+                                        address2={agency.address2}
+                                        telephone={agency.telephone}
+                                        email={agency.email}
+                                        key={index}/>
                     })
-
-                   
                 })}
                 </div>
-                
+                <DataLoader show={!agencyInfo.PagesLoaded && agencyInfo.Agencies.length != 0} 
+                            handleOnClick={this.retrieveAgencies} 
+                            text='Load more'/>
                 {/* Pagination */}
             </div>
          )
@@ -33,7 +49,8 @@ const mapStateToProps= (state) => {
         agencyInfo:state.agencyInfo
     }
 }
-const mapDispatchToProps = (dispatch) =>{
-}
+const mapDispatchToProps = (dispatch) =>({
+    loadNextPage:(criteria,pageNumber) => dispatch ( getAgencies (criteria,pageNumber) )     
+})
  
-export default connect(mapStateToProps)(Agencies);
+export default connect(mapStateToProps,mapDispatchToProps)(Agencies);

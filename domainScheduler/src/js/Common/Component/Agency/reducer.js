@@ -19,7 +19,7 @@ const agencyInfo = (state=initialState,action) =>{
             return { ...initialState,SearchCriteria:action.payload }
         case GET_AGENCIES_SUCCESS:
             // console.log(action)
-            // console.log ('On success ', { ...state,Agencies:[...state.Agencies,action.payload],NextPageNumber:state.NextPageNumber++ })
+             console.log ('On success ', { ...state,Agencies:[...state.Agencies,action.payload],NextPageNumber:state.NextPageNumber++ })
             // console.log('payload ',action.payload.length)
             if(action.payload.length!==0){
                 return { ...state,Agencies:[...state.Agencies,action.payload],NextPageNumber:state.NextPageNumber++ }

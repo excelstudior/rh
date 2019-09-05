@@ -37,23 +37,15 @@ class Navbar extends Component {
         this.agentNameToSearch.current.value=event.target.value
     }
     searchAgentByName =()=>{
-        if (this.props.agencyInfo.PagesLoaded){
-            //need to add some logic to show popup
-            return false
-        }
         let agentName=this.agentNameToSearch.current.value
         let criteria='name:"'+agentName+'"';
-        // console.log(this.props.agencyInfo)
-        if (criteria==this.props.agencyInfo.SearchCriteria){
+        if (criteria!=this.props.agencyInfo.SearchCriteria){
+            this.props.resetCriteriaAndSearchAgencies(criteria,1)
+        } else if (criteria==this.props.agencyInfo.SearchCriteria 
+                    && !this.props.agencyInfo.PagesLoaded ) {
             let pageNumber=this.props.agencyInfo.NextPageNumber;
             this.props.searchAgentByName(criteria,pageNumber)
-            return
-        } else {
-            this.props.resetCriteriaAndSearchAgencies(criteria,1)
         }
-
-
-        
     }
 
     render() { 
