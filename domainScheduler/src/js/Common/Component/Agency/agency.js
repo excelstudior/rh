@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
+import Bar from './bar';
+
 class Agency extends Component {
     shouldComponentUpdate(nextProp,nextState){
         return nextProp.name !=this.props.name
     }
     render() { 
-        let { name, address1 , address2 , suburb , state , telephone , email
+        let { name, address1 , address2 , suburb , state , telephone , email 
+            ,agencyId , numberForSale, numberForRent, numberSoldInLast3Months
              } = this.props
         address2 = address2 != ''?
                     address2+' ' : ''
@@ -33,8 +36,21 @@ class Agency extends Component {
                     <a>Link1</a>
                 </div>
                 <div className='agency-pulse'>
-                    <div>Pulse</div>
-                    <div></div>
+                    <Bar legend='For Sale'
+                         parentClass='agency-pulse-item'
+                         barClass='barchart-bar sale'
+                         amount={numberForSale}
+                         />
+                    <Bar legend='For Rent'
+                         parentClass='agency-pulse-item'
+                         barClass='barchart-bar rent'
+                         amount={numberForRent}
+                         />
+                    <Bar legend='-3M Sold'
+                         parentClass='agency-pulse-item'
+                         barClass='barchart-bar sold'
+                         amount={numberSoldInLast3Months}
+                         />
                 </div>
                 
                 

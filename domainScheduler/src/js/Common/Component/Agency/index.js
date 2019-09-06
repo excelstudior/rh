@@ -31,7 +31,11 @@ class Agencies extends Component {
                                         address2={agency.address2}
                                         telephone={agency.telephone}
                                         email={agency.email}
-                                        key={index}/>
+                                        numberForSale={agency.numberForSale != undefined ? agency.numberForSale:0}
+                                        numberForRent={agency.numberForRent != undefined ? agency.numberForRent:0}
+                                        numberSoldInLast3Months={agency.numberSoldInLast3Months != undefined ? agency.numberSoldInLast3Months:0}
+                                        key={index}
+                                        />
                     })
                 })}
                 </div>

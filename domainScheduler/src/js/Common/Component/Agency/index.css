@@ -1,7 +1,7 @@
 #agenciesWrapper{
     /* background-color:#eceef0; */
     position: relative;
-    margin:0 20px;
+    margin:0 15%;
 }
 #agencies-list{
     /* display: block; */
@@ -22,7 +22,7 @@
 }
 .agency-contact{
     float: left;
-    width: 30%;
+    width: 28%;
     height:100%;
     color:#333333;
     font-weight: 400;
@@ -64,19 +64,48 @@
      */
 }
 .agency-pulse{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
     float: right;
     width: 40%;
     height: 100%;
-    margin-left:5%;
-    margin-right:5%;
-    /* margin:24px auto; */
+    padding-left:1%;
+    padding-right:1%;
+    border-left:2px #ebedf0 solid;
+    border-right:2px #ebedf0 solid;
 }
+.agency-pulse-item{
+    display: flex;
+    align-items: center;
+}
+
+.agency-pulse-item>span{
+     width: 15%;
+}
+.agency-pulse-item span:nth-child(3){
+    margin-left:2%;
+}
+
 .agency-link{
    float: right;
-   width: 15%;
+   width: 28%;
 }
 #agencyLoader{
     margin:5px;
     padding:5px 5px;
     background-color:#fff;
+}
+.barchart-bar{
+    border-width: 10px;
+    border-style: solid;
+}
+.sale{
+   border-color:blue; 
+}
+.rent{
+    border-color:#0ea800;
+}
+.sold{
+    border-color:red;
 }
