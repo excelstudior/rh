@@ -32,7 +32,10 @@
 }
 .agency-contact div{
     padding:2px 0px;
-    width: 100%
+    width: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 .agency-contact div i{
     width: 14px;
@@ -53,11 +56,12 @@
     padding-top:3px;
     
 }
-.agency-contact div p {
+.agency-contact div>p {
     display: inline;
+    /* text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
-    text-overflow: ellipsis;
+     */
 }
 .agency-pulse{
     float: right;
@@ -70,4 +74,9 @@
 .agency-link{
    float: right;
    width: 15%;
+}
+#agencyLoader{
+    margin:5px;
+    padding:5px 5px;
+    background-color:#fff;
 }

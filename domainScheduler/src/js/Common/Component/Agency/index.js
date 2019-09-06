@@ -35,9 +35,10 @@ class Agencies extends Component {
                     })
                 })}
                 </div>
-                <DataLoader show={!agencyInfo.PagesLoaded && agencyInfo.Agencies.length != 0} 
+                <DataLoader stylingId='agencyLoader'
+                            show={!agencyInfo.PagesLoaded && agencyInfo.Agencies.length != 0} 
                             handleOnClick={this.retrieveAgencies} 
-                            text='Load more'/>
+                            text='Load more ... '/>
                 {/* Pagination */}
             </div>
          )
