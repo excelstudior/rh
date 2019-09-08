@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './index.css';
-import api from '../../../../images/ApiConnect.png';
-import apiOn from '../../../../images/ApiOn.png';
+import api from '../../../../images/off.svg';
+import apiOn from '../../../../images/on.svg';
 import { connect } from 'react-redux';
 import { connectToDomain,disconnectToDomain,is, testGetAgencies } from './action';
 import { getAgencies, resetAgencySearchCriteria } from '../Agency/action';
@@ -52,7 +52,7 @@ class Navbar extends Component {
         const { domain,connectToDomainApi,disconnectToDomainApi}=this.props
         return ( 
             <div id="navbarWrapper">
-                <div id="narbar">
+                <div id="navbar">
                     <div id="logo"></div>
                     <h1 id='brand'>Inspection Planner</h1>
                     <div>

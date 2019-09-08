@@ -2,6 +2,13 @@
     /* background-color:#eceef0; */
     position: relative;
     margin:0 15%;
+
+}
+#agencies-menu{
+    /* position: fixed; */
+    border:1px solid black;
+    height: 32px;
+
 }
 #agencies-list{
     /* display: block; */
@@ -17,14 +24,14 @@
     margin: 5px;
     padding: 5px;
     height: 80px;
-    background-color:#fff;
+    background-color:#ebedf0;
     font-size: 12px;
 }
 .agency-contact{
     float: left;
     width: 28%;
     height:100%;
-    color:#333333;
+    color:#3c475b;
     font-weight: 400;
     display: flex;
     flex-direction: column;
@@ -72,8 +79,8 @@
     height: 100%;
     padding-left:1%;
     padding-right:1%;
-    border-left:2px #ebedf0 solid;
-    border-right:2px #ebedf0 solid;
+    border-left:2px #b7b8b9 solid;
+    border-right:2px #b7b8b9 solid;
 }
 .agency-pulse-item{
     display: flex;
@@ -101,11 +108,11 @@
     border-style: solid;
 }
 .sale{
-   border-color:blue; 
+   border-color:rgb(72, 72, 245); 
 }
 .rent{
     border-color:#0ea800;
 }
 .sold{
-    border-color:red;
+    border-color:rgb(250, 69, 69);
 }

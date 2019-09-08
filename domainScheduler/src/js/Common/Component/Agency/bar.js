@@ -1,6 +1,6 @@
 import React from 'react';
 const Bar = ({legend,parentClass,barClass,amount}) =>{
-    let barlength=amount < 100 ? (amount*0.8)+'%' : '80%'
+    let barlength=amount < 500 ? (amount*0.2*0.6)+'%' : '60%'
     return(
         <div className={parentClass}>
                         <span>{legend}</span>

@@ -4,20 +4,20 @@
     padding-right:16px; */
     height: 32px;
     padding:16px;
-    color:#fff;
-    background-color:#0ea800 ;
-    /* border-bottom: 1px solid #d0d3d9; */
+    color:#0ea800;
+    background-color:#fff ;
+    border-bottom: 1px solid #d0d3d9;
 }
 #navbar{
-    position: absolute;
-    /* height: 32px; */
+  
+    height: 32px;
     }
 #logo{
     position:absolute;
     display: block;
     width: 32px;
     height: 32px;
-    background: url("../../../../images/InspectHomeMag52_white.png");
+    background: url("../../../../images/InspectHomeMag52.png");
     background-size: 80% 80%;
     background-repeat: no-repeat;
     background-position:center;
@@ -45,7 +45,7 @@
 .menuItem input{
     font-size: 16px;
     /* border-radius: 16px; */
-    border: none;
+    border: 1px solid #0ea800;
     padding: 6px 36px 6px 14px;
 }
 .menuItem input+span{

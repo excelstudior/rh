@@ -19,7 +19,7 @@ class Agencies extends Component {
             <div id='agenciesWrapper'>
                 {/* Filters */}
                 
-                <div id="menu"></div>
+                <div id="agencies-menu">This is Menu</div>
                 <div id="agencies-list-fixed-header"></div>
                 <div id="agencies-list">
                 { agencyInfo.Agencies.map((item,index)=>{
