@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Agency from './agency';
+import AgenciesMenu from './agenciesMenu';
 import DataLoader from '../Common/DataLoader/DataLoader';
 import './index.css';
 import { getAgencies } from './action';
@@ -19,8 +20,7 @@ class Agencies extends Component {
             <div id='agenciesWrapper'>
                 {/* Filters */}
                 
-                <div id="agencies-menu">This is Menu</div>
-                <div id="agencies-list-fixed-header"></div>
+                <AgenciesMenu/>
                 <div id="agencies-list">
                 { agencyInfo.Agencies.map((item,index)=>{
                    return item.map((agency,index)=>{

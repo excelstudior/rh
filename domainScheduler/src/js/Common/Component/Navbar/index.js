@@ -54,7 +54,7 @@ class Navbar extends Component {
             <div id="navbarWrapper">
                 <div id="navbar">
                     <div id="logo"></div>
-                    <h1 id='brand'>Inspection Planner</h1>
+                    <h1 id='brand'>Market Pulse</h1>
                     <div>
                         <ul id='menu'>
                             <li className='menuItem'>

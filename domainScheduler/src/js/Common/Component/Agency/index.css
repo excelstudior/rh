@@ -1,30 +1,41 @@
 #agenciesWrapper{
-    /* background-color:#eceef0; */
+    background-color:#eceef0;
     position: relative;
-    margin:0 15%;
 
 }
 #agencies-menu{
-    /* position: fixed; */
-    border:1px solid black;
+    /* border:1px solid black; */
+    background-color:#7e8594;
     height: 32px;
+    /* margin:0 15%; */
+    padding:16px 15% ;
+    /* padding-top:16px;
+    padding-bottom: 16px; */
 
 }
+#agencies-menu-search{
+    margin-left:5px;
+    line-height: 32px;
+}
+
+#agencies-menu-search input{
+    font-size: 16px;
+    padding:6px 36px 6px 14px;
+    border:none;
+}
+#agencies-menu-search input+span{
+    margin-left:-30px;
+    color:#0ea800;
+}
 #agencies-list{
-    /* display: block; */
-    /* flex-direction: row;
-    justify-content: flex-start;
-    align-content: center;
-    flex-wrap: wrap;  */
-    
+    margin:0 15%;
 }
 .agency-item{
-    /* display:inline; */
     position: relative;
     margin: 5px;
     padding: 5px;
     height: 80px;
-    background-color:#ebedf0;
+    background-color:#fff;
     font-size: 12px;
 }
 .agency-contact{
