@@ -13,7 +13,7 @@ class AgenciesMenu extends Component {
     searchAgencies = () => {
         let nameToSearch=this.searchValue.current.value
         let criteria='name:"'+nameToSearch+'"';
-        console.log(criteria)
+        console.log(criteria, this.props.searchAgencies)
     }
    
     render() { 
@@ -21,7 +21,7 @@ class AgenciesMenu extends Component {
             <div id="agencies-menu">
                 <div id='agencies-menu-search'>
                     <input ref={this.searchValue} 
-                           placeholder='Find agencies' 
+                           placeholder='Search agencies by name' 
                            onChange={this.handleSearchValueChange}/>
                     <span className='fa fa-search' onClick={this.searchAgencies}/>
                 </div>

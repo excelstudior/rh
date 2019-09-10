@@ -4,7 +4,7 @@ import Agency from './agency';
 import AgenciesMenu from './agenciesMenu';
 import DataLoader from '../Common/DataLoader/DataLoader';
 import './index.css';
-import { getAgencies } from './action';
+import { getAgencies, resetAgencySearchCriteria } from './action';
 
 class Agencies extends Component {
 
@@ -14,13 +14,14 @@ class Agencies extends Component {
         this.props.loadNextPage ( SearchCriteria, NextPageNumber );
     }
     render() { 
-        const { agencyInfo }=this.props;
+        const { agencyInfo, searchAgenciesByName, resetCriteriaAndSearchAgenciesByName }=this.props;
         // console.log(agencyInfo)
         return ( 
             <div id='agenciesWrapper'>
                 {/* Filters */}
                 
-                <AgenciesMenu/>
+                <AgenciesMenu searchAgencies={searchAgenciesByName} 
+                              resetAndsearchAgencies={resetCriteriaAndSearchAgenciesByName}/>
                 <div id="agencies-list">
                 { agencyInfo.Agencies.map((item,index)=>{
                    return item.map((agency,index)=>{
@@ -54,8 +55,13 @@ const mapStateToProps= (state) => {
         agencyInfo:state.agencyInfo
     }
 }
-const mapDispatchToProps = (dispatch) =>({
-    loadNextPage:(criteria,pageNumber) => dispatch ( getAgencies (criteria,pageNumber) )     
+const mapDispatchToProps = ( dispatch ) =>({
+    loadNextPage:( criteria, pageNumber ) => dispatch ( getAgencies ( criteria,pageNumber ) ),
+    searchAgenciesByName: ( criteria, pageNumber ) => dispatch ( getAgencies ( criteria,pageNumber ) ),
+    resetCriteriaAndSearchAgenciesByName:( criteria,pageNumber )=>{
+        dispatch ( resetAgencySearchCriteria( criteria ) )
+        dispatch ( getAgencies( criteria, pageNumber ) )
+    }
 })
  
 export default connect(mapStateToProps,mapDispatchToProps)(Agencies);
