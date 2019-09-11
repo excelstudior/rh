@@ -14,14 +14,15 @@ class Agencies extends Component {
         this.props.loadNextPage ( SearchCriteria, NextPageNumber );
     }
     render() { 
-        const { agencyInfo, searchAgenciesByName, resetCriteriaAndSearchAgenciesByName }=this.props;
+        const { agencyInfo, searchAgencies, resetCriteriaAndSearchAgencies }=this.props;
         // console.log(agencyInfo)
         return ( 
             <div id='agenciesWrapper'>
                 {/* Filters */}
                 
-                <AgenciesMenu searchAgencies={searchAgenciesByName} 
-                              resetAndsearchAgencies={resetCriteriaAndSearchAgenciesByName}/>
+                <AgenciesMenu agencyInfo={agencyInfo}
+                              searchAgencies={searchAgencies} 
+                              resetAndsearchAgencies={resetCriteriaAndSearchAgencies}/>
                 <div id="agencies-list">
                 { agencyInfo.Agencies.map((item,index)=>{
                    return item.map((agency,index)=>{
@@ -57,8 +58,8 @@ const mapStateToProps= (state) => {
 }
 const mapDispatchToProps = ( dispatch ) =>({
     loadNextPage:( criteria, pageNumber ) => dispatch ( getAgencies ( criteria,pageNumber ) ),
-    searchAgenciesByName: ( criteria, pageNumber ) => dispatch ( getAgencies ( criteria,pageNumber ) ),
-    resetCriteriaAndSearchAgenciesByName:( criteria,pageNumber )=>{
+    searchAgencies: ( criteria, pageNumber ) => dispatch ( getAgencies ( criteria,pageNumber ) ),
+    resetCriteriaAndSearchAgencies:( criteria,pageNumber )=>{
         dispatch ( resetAgencySearchCriteria( criteria ) )
         dispatch ( getAgencies( criteria, pageNumber ) )
     }

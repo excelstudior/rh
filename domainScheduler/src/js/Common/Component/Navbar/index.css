@@ -50,6 +50,7 @@
     padding: 6px 36px 6px 14px;
 }
 .menuItem input+span{
+    display: inline;
     margin-left:-30px;
     color:#0ea800;
 }
