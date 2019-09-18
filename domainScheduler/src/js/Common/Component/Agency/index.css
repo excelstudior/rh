@@ -50,7 +50,7 @@
     justify-content: space-between;
 }
 .agency-contact div{
-    font-size: 16px;
+    font-size: 14px;
     padding:3px 0px;
     width: 100%;
     text-overflow: ellipsis;
@@ -69,7 +69,7 @@
 .agency-contact div:nth-child(1){
     border-bottom:1px #ebedf0 solid;
     font-size: 20px;
-    padding-bottom:5px;
+    padding-top:0px;
     font-weight:600;
 }
 .agency-contact div:nth-child(2){
@@ -88,12 +88,12 @@
     flex-direction: column;
     justify-content: space-around;
     float: right;
-    width: 40%;
+    width: 35%;
     height: 100%;
     padding-left:1%;
     padding-right:1%;
-    border-left:2px #b7b8b9 solid;
-    border-right:2px #b7b8b9 solid;
+    /* border-left:2px #b7b8b9 solid; */
+    /* border-right:2px #b7b8b9 solid; */
 }
 .agency-pulse-item{
     display: flex;
@@ -108,9 +108,23 @@
 }
 
 .agency-link{
-   float: right;
-   width: 28%;
+    float: right;
+    width: 33%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    /* flex-direction: column; */
+    align-items: center;
+    /* justify-content: space-around; */
 }
+.link{
+    width: 100%;
+    font-size: 20px;
+}
+.link span:hover{
+    cursor: pointer;
+}
+
 #agencyLoader{
     margin:5px;
     padding:5px 5px;
@@ -128,4 +142,14 @@
 }
 .sold{
     border-color:rgb(250, 69, 69);
+}
+.icon{
+    width:25px;
+    margin-left:10%;
+    margin-right:2px;
+    padding-right:3px;
+    /* border-right:0.5px solid #b7b8b9; */
+}
+.icon::before{
+    color:green;
 }

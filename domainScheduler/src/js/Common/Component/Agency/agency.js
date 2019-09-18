@@ -12,6 +12,7 @@ class Agency extends Component {
         address2 = address2 != ''?
                     address2+' ' : ''
         const address=address1+' '+ address2 + suburb + ' ' + state
+        const mailTo=`mailto:${email}`;
         return ( 
             <div className='agency-item'> 
                 <div className='agency-contact'>
@@ -28,13 +29,10 @@ class Agency extends Component {
                     </div>
                     <div>
                         <i className="fa fa-envelope "></i>
-                        <p>{email}</p>
+                        <p><a href={mailTo}>{email}</a></p>
                     </div>
                 </div>
-                <div className='agency-link'>
-                    <a>Link2</a>
-                    <a>Link1</a>
-                </div>
+                
                 <div className='agency-pulse'>
                     <Bar legend='For Sale'
                          parentClass='agency-pulse-item'
@@ -52,7 +50,16 @@ class Agency extends Component {
                          amount={numberSoldInLast3Months}
                          />
                 </div>
-                
+                <div className='agency-link'>
+                    <div className="link">
+                        <i class="fa fa-list icon"></i>
+                        <span>Listings</span>
+                    </div>
+                    <div className="link">
+                        <i class="fa fa-users icon"></i>
+                        <span>Agents</span>
+                    </div>
+                </div>
                 
             </div>
          )
