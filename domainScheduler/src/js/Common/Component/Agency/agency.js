@@ -5,9 +5,14 @@ class Agency extends Component {
     shouldComponentUpdate(nextProp,nextState){
         return nextProp.name !=this.props.name
     }
+
+    showDetails = () => {
+        console.log( event.target.id)
+        this.props.showAgencyDetails( event.target.id );
+    }
     render() { 
         let { name, address1 , address2 , suburb , state , telephone , email 
-            ,agencyId , numberForSale, numberForRent, numberSoldInLast3Months
+            ,agencyId , numberForSale, numberForRent, numberSoldInLast3Months,showAgencyDetails
              } = this.props
         address2 = address2 != ''?
                     address2+' ' : ''
@@ -52,12 +57,12 @@ class Agency extends Component {
                 </div>
                 <div className='agency-link'>
                     <div className="link">
-                        <i class="fa fa-list icon"></i>
-                        <span>Listings</span>
+                        <i className="fa fa-list icon"></i>
+                        <span >Listings</span>
                     </div>
                     <div className="link">
-                        <i class="fa fa-users icon"></i>
-                        <span>Agents</span>
+                        <i className="fa fa-users icon"></i>
+                        <span id={agencyId} onClick={this.showDetails}>Agents</span>
                     </div>
                 </div>
                 

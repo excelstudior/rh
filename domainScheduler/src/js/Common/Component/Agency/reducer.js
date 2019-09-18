@@ -2,6 +2,8 @@ import {
     GET_AGENCIES_SUCCESS, 
     GET_AGENCIES_FAILURE,
     SET_AGENCY_SEARCH_CRITERIA,
+    SET_SELECTED_AGENCY,
+    GET_AGENCY_BY_ID_SUCCESS
 } from './action';
 
 const initialState={
@@ -15,8 +17,12 @@ const initialState={
 const agencyInfo = (state=initialState,action) =>{
     switch (action.type){
         case SET_AGENCY_SEARCH_CRITERIA:
-           
             return { ...initialState,SearchCriteria:action.payload }
+        case SET_SELECTED_AGENCY:
+            return { ...state,SelectedAgency: action.payload }
+        case GET_AGENCY_BY_ID_SUCCESS:
+            console.log(action.payload);
+            return { ...state,SelectedAgency: action.payload }
         case GET_AGENCIES_SUCCESS:
             // console.log(action)
              console.log ('On success ', { ...state,Agencies:[...state.Agencies,action.payload],NextPageNumber:state.NextPageNumber++ })

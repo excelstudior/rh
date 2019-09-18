@@ -40,7 +40,8 @@ export function asyncCallApi(endpoint,method,types,data,apiName){
             }
         }
     } else {
-        endpoint=endpoint+'?'+queryString.stringify(data);
+        endpoint= data != null || data != '' ? 
+                 endpoint+'?'+queryString.stringify(data) : endpoint;
         return {
             [RSAA]:{
                 endpoint:endpoint,

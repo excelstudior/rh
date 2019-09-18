@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Agency from './agency';
 import AgenciesMenu from './agenciesMenu';
+import AgencyDetails from './agencyDetails/index';
 import DataLoader from '../Common/DataLoader/DataLoader';
 import './index.css';
-import { getAgencies, resetAgencySearchCriteria } from './action';
+import { getAgencies, resetAgencySearchCriteria,getAgencyDetailsById } from './action';
 
 class Agencies extends Component {
 
@@ -14,12 +15,12 @@ class Agencies extends Component {
         this.props.loadNextPage ( SearchCriteria, NextPageNumber );
     }
     render() { 
-        const { agencyInfo, searchAgencies, resetCriteriaAndSearchAgencies }=this.props;
+        const { agencyInfo, searchAgencies, resetCriteriaAndSearchAgencies,getAgencyDetails }=this.props;
         // console.log(agencyInfo)
         return ( 
             <div id='agenciesWrapper'>
                 {/* Filters */}
-                
+                <AgencyDetails agencyInfo={agencyInfo}/>
                 <AgenciesMenu agencyInfo={agencyInfo}
                               searchAgencies={searchAgencies} 
                               resetAndsearchAgencies={resetCriteriaAndSearchAgencies}/>
@@ -37,6 +38,8 @@ class Agencies extends Component {
                                         numberForRent={agency.numberForRent != undefined ? agency.numberForRent:0}
                                         numberSoldInLast3Months={agency.numberSoldInLast3Months != undefined ? agency.numberSoldInLast3Months:0}
                                         key={index}
+                                        agencyId={agency.id}
+                                        showAgencyDetails={getAgencyDetails}
                                         />
                     })
                 })}
@@ -62,7 +65,8 @@ const mapDispatchToProps = ( dispatch ) =>({
     resetCriteriaAndSearchAgencies:( criteria,pageNumber )=>{
         dispatch ( resetAgencySearchCriteria( criteria ) )
         dispatch ( getAgencies( criteria, pageNumber ) )
-    }
+    },
+    getAgencyDetails:( agencyId )=>dispatch ( getAgencyDetailsById( agencyId ) )
 })
  
 export default connect(mapStateToProps,mapDispatchToProps)(Agencies);
