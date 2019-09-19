@@ -22,4 +22,38 @@
     display: block;
     height: 0;
     clear: both;
- }
+}
+
+.stick{
+    position: fixed;
+    top:0;
+    z-index: 1;
+    width: 50%;
+    height: 100%;
+    background-color: #fff;
+}
+.closeButton{
+    position: absolute;
+    right:16px;
+    top:16px;
+    width: 24px;
+    height:24px;
+    opacity: 0.5;
+}
+.closeButton:hover{
+    opacity: 1;
+}
+.closeButton::before,.closeButton::after{
+    position: absolute;
+    left:11px;
+    content:'';
+    height: 26px;
+    width:2px;
+    background-color: #333;
+}
+.closeButton::before{
+    transform: rotate(45deg);
+}
+.closeButton::after{
+    transform: rotate(-45deg);
+}
