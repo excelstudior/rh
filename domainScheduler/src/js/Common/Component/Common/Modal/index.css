@@ -1,0 +1,46 @@
+.modalWrapper{
+    position: absolute;
+    width: 100%;
+    height:100%;
+}
+
+.modalInner{
+    position: absolute;
+    margin-top:16px;
+    margin-left: -20%;
+    width: 40%;
+    left:50%;
+    border:1px solid #7e8594;
+    background-color: #7e8594;
+    color:rgb(233, 232, 232);
+    
+    z-index: 2;
+}
+.modalInner span{
+    display: block;
+    /* text-align: center; */
+    padding: 10px;
+    font-weight: 500;
+} 
+
+.modalInner p{
+    padding: 10px;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+.modalInner li{
+    /* display: inline-block; */
+    float: right;
+    padding: 10px;
+    font-size: 10px
+}
+.modal-message{
+    background-color:#fff;
+    color:#7e8594;
+    /* letter-spacing:0.1em; */
+}
+#modal-btnGroup{
+    /* position: absolute; */
+    right: 0;
+}
+
