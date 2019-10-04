@@ -10,7 +10,7 @@ class App extends Component {
     render() { 
         return ( 
             <Provider store = { store } >
-                    <ModalWrapper message=""/>
+                    <ModalWrapper title='i am not titleless' message="dddddddddddffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"/>
                     <Navbar/>
                     <Agencies/>
             </Provider> 

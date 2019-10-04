@@ -12,6 +12,11 @@ class ModalWrapper extends Component {
         }
         this.wrapper=React.createRef();
     }
+    componentDidMount(){
+        this.setState({
+            show:'show'
+        })
+    }
     close = () =>{
         this.setState({
             show:'hide'
@@ -19,12 +24,15 @@ class ModalWrapper extends Component {
     }
 
     renderInner= ()=>{
-        let { dimensions }=this.state;
-        let { title,message,children }=this.props
+        // let { dimensions }=this.state;
+        let { show, dimensions }=this.state;
+        let { title,message,children }=this.props;
+        console.log(title)
         return (
-            <div className='modalInner'>       
+            <div className={`modalInner ${show}`}>       
+            {/* <div className='modalInner'>        */}
             <div className='modal-content'>
-                    {title!=='' ?<span className='modal-title'>{ title }</span>:''}
+                    {title!==''&& title!==undefined ?<span className='modal-title'>{ title }</span>:''}
                     <p className='modal-message'>{ message }</p>
             </div>
                     
@@ -41,8 +49,9 @@ class ModalWrapper extends Component {
     render() { 
         
         let { show,dimensions }=this.state;
-        return (  
-            <div className={`modalWrapper ${show} `} ref={this.wrapper}>
+        return (
+            <div className='modalWrapper' ref={this.wrapper}>
+            {/* <div className={`modalWrapper ${show} `} ref={this.wrapper}> */}
                 {/* {dimensions&&this.renderInner()} */}
                 {this.renderInner()}
             </div>
@@ -69,4 +78,5 @@ const mapDispatchToProps = ( dispatch ) =>({
     // },
     // getAgencyDetails:( agencyId )=>dispatch ( getAgencyDetailsById( agencyId ) )
 })
-export default connect(mapStateToProps,mapDispatchToProps)(ModalWrapper);
+// export default connect(mapStateToProps,mapDispatchToProps)(ModalWrapper);
+export default connect()(ModalWrapper);
