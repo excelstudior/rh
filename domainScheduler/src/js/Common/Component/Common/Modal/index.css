@@ -1,39 +1,40 @@
 .modalWrapper{
     position: absolute;
     width: 100%;
-    height:100%;
-    
-    
 }
 
-.modalInner{
-    /* display: none; */
+#modalInner.modalHide{
+    margin-top:-1116px;    
+}
+#modalInner.modalShow{
+    margin-top:0px; 
+}
+#modalInner{
     position: absolute;
-    /* margin-top:-1116px; */
+    margin-top:-1116px; 
     margin-left: -20%;
     width: 40%;
     left:50%;
     border:1px solid #0ea800;
     background-color: #0ea800;
     color:rgb(233, 232, 232);
-    /* opacity: 0.2; */
-    /* visibility: hidden; */
-    transition:all 1s ease-in-out;
     z-index: 2;
+    transition:all 1s ease-in-out;
+    
 }
-.modalInner span{
+#modalInner span{
     display: block;
     /* text-align: center; */
     padding: 10px;
     font-weight: 500;
 } 
 
-.modalInner p{
+#modalInner p{
     padding: 10px;
     overflow-wrap: break-word;
     word-wrap: break-word;
 }
-.modalInner li{
+#modalInner li{
     /* display: inline-block; */
     float: right;
     padding: 10px;

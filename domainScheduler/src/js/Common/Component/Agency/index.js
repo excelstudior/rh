@@ -5,6 +5,8 @@ import AgenciesMenu from './agenciesMenu';
 import AgencyDetails from './agencyDetails/index';
 import DataLoader from '../Common/DataLoader/DataLoader';
 import Spinner from '../Common/Spinner/spinner';
+import Modal from '../Common/Modal/index';
+import AgencyModal from '../Common/Modal/Agency/index';
 import './index.css';
 import { getAgencies, resetAgencySearchCriteria,getAgencyDetailsById } from './action';
 
@@ -21,6 +23,7 @@ class Agencies extends Component {
         return ( 
             <div id='agenciesWrapper'>
                 {/* Filters */}
+                <AgencyModal title='Title' message='new message'/>
                 <AgencyDetails agencyInfo={agencyInfo}/>
                 <AgenciesMenu agencyInfo={agencyInfo}
                               searchAgencies={searchAgencies} 

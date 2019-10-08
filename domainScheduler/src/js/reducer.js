@@ -4,5 +4,5 @@ import navbar from './Common/Component/Navbar/reducer';
 import agencyInfo from './Common/Component/Agency/reducer';
 export default combineReducers({
     navbar,
-    agencyInfo
+    agencyInfo,
 })
