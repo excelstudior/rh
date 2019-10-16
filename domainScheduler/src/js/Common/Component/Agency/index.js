@@ -9,8 +9,28 @@ import Modal from '../Common/Modal/index';
 import AgencyModal from '../Common/Modal/Agency/index';
 import './index.css';
 import { getAgencies, resetAgencySearchCriteria,getAgencyDetailsById } from './action';
+import { scrollToBottom } from '../../Utils/tools';
+
 
 class Agencies extends Component {
+
+    componentDidMount(){
+        document.addEventListener('scroll',this.onScroll)
+    }
+
+    componentWillUpdate(nextProps,nextState){
+        if (nextProps.agencyInfo.PagesLoaded){
+            document.removeEventListener('scroll',this.onScroll)
+        } else {
+            document.addEventListener('scroll',this.onScroll)
+        }
+    }
+    onScroll = () =>{
+        let shouldLoadMoreAgencies = scrollToBottom (0);
+
+        console.log ( shouldLoadMoreAgencies );
+        shouldLoadMoreAgencies && this.retrieveAgencies();
+    }
 
     retrieveAgencies = () => {
         let { NextPageNumber, SearchCriteria } = this.props.agencyInfo;
@@ -19,7 +39,6 @@ class Agencies extends Component {
     }
     render() { 
         const { agencyInfo, searchAgencies, resetCriteriaAndSearchAgencies,getAgencyDetails }=this.props;
-        // console.log(agencyInfo)
         return ( 
             <div id='agenciesWrapper'>
                 {/* Filters */}
@@ -49,10 +68,10 @@ class Agencies extends Component {
                     })
                 })}
                 </div>
-                <DataLoader stylingId='agencyLoader'
+                {/* <DataLoader stylingId='agencyLoader'
                             show={!agencyInfo.PagesLoaded && agencyInfo.Agencies.length != 0} 
                             handleOnClick={this.retrieveAgencies} 
-                            text='Load more ... '/>
+                            text='Load more ... '/> */}
                 {/* Pagination */}
             </div>
          )
