@@ -35,14 +35,19 @@ const agencyInfo = ( state = initialState, action ) =>{
         case GET_AGENCIES_REQUEST:
             return { ...state,LoadingAgencies : true}    
         case GET_AGENCIES_SUCCESS:
+            console.log(state.NextPageNumber++)
             if( action.payload.length!==0 ){
                 return { ...state,
                         LoadingAgencies:false ,
                         Agencies:[ ...state.Agencies, action.payload ] ,
                         NextPageNumber:state.NextPageNumber++ }
-            } else if ( action.payload.length!==0 && PagesLoaded===true && NextPageNumber===1 ) {
+            } else if ( action.payload.length===0 && state.PagesLoaded===false ) {
                 return { ...state,
-                        modal:{ ...state.modal, message:END_OF_THE_LIST } }
+                        modal:{ ...state.modal, message:END_OF_THE_LIST } ,
+                        LoadingAgencies:false ,
+                        PagesLoaded:true,
+                        NextPageNumber:1
+                        }
             } else {
                 return { ...state, 
                          LoadingAgencies:false, 

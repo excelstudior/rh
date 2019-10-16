@@ -6,9 +6,7 @@ import {  closeAgencyModal } from './action';
 
 class ModalAgency extends Component {
     render() { 
-        let { title,message,closeModal } = this.props.agencyInfo.modal;
-        
-        console.log (this.props.closeModal);
+        let { title,message } = this.props.agencyInfo.modal;
         return ( 
             <Modal title={title} message={message} onModalClose={this.props.closeModal}/>
          );

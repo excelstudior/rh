@@ -13,7 +13,6 @@ class ModalWrapper extends Component {
         this.wrapper=React.createRef();
     }
     shouldComponentUpdate(nextProp,nextState){
-        console.log(nextProp.message);
         if ( nextProp.message != this.props.message && nextProp.message !==''){
             this.setState({
                 show:'modalShow'
@@ -35,7 +34,6 @@ class ModalWrapper extends Component {
 
         let { show, dimensions }=this.state;
         let { title,message,children }=this.props;
-        console.log(title)
         return (
                 <div id='modalInner' className={`${show}`}> 
                 <div className='modal-content'>

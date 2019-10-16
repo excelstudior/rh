@@ -51,8 +51,6 @@ class Spinner extends Component {
         let bColor=color+' transparent '+color+' transparent';
         width=width+'px';
         height=height+'px';
-        
-        console.log(width,height,mLeft,mTop)
         return (  
             <div className="lds-dual-ring"
                 style={{"width":width,

@@ -29,8 +29,8 @@ class Agencies extends Component {
                               searchAgencies={searchAgencies} 
                               resetAndsearchAgencies={resetCriteriaAndSearchAgencies}/>
                 <div id="agencies-list">
-                { agencyInfo.LoadingAgencies? <Spinner width={200} height={200} marginTop={200}/>
-                  :agencyInfo.Agencies.map((item,index)=>{
+                { agencyInfo.LoadingAgencies? <Spinner width={200} height={200} marginTop={200}/>:''}
+                  {agencyInfo.Agencies.map((item,index)=>{
                    return item.map((agency,index)=>{
                         return  <Agency name={agency.name} 
                                         suburb={agency.suburb}
