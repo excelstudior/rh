@@ -44,11 +44,7 @@ const getWindowHeight = () => {
     }
     return windowHeight;
 }
-export const scrollToBottom = ( clearence ) =>{
-    if ( typeof(clearence) !== 'number') {
-        console.error ( clearence + ' is not a number ')
-        return
-    }
-    return getScrollTop()+getWindowHeight()+clearence === getScrollHeight()
+export const scrollToBottom = () =>{
+    return getScrollTop()+getWindowHeight() === getScrollHeight()
 }
 // End scroll to bottom check

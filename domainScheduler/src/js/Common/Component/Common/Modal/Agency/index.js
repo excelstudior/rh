@@ -8,7 +8,9 @@ class ModalAgency extends Component {
     render() { 
         let { title,message } = this.props.agencyInfo.modal;
         return ( 
-            <Modal title={title} message={message} onModalClose={this.props.closeModal}/>
+            <Modal title={title} message={message} onModalClose={this.props.closeModal}>
+                <li>Test</li>
+            </Modal>
          );
     }
 }

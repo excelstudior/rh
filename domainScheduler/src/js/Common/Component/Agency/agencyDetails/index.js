@@ -13,8 +13,6 @@ class AgencyDetails extends Component {
     }
 
     shouldComponentUpdate(nextProp,nextState){
-        //nextProp.agencyInfo.SelectedAgency !=this.props.agencyInfo.SelectedAgency || 
-        console.log(nextProp.agencyInfo.LoadingAgencyDetails);
         if ( nextProp.agencyInfo.LoadingAgencyDetails != this.props.agencyInfo.LoadingAgencyDetails){
             this.setState({
                 show:'block'
@@ -30,16 +28,19 @@ class AgencyDetails extends Component {
     render() { 
         let {show} =this.state;
         let { LoadingAgencyDetails, SelectedAgency}=this.props.agencyInfo;
-        console.log('loading...',LoadingAgencyDetails)
+        console.log('loading...',SelectedAgency)
         return ( 
             <div className='stick' style={{"display":show}}>
             {/* //</div><div> */}
-                {LoadingAgencyDetails?<Spinner width={100} height={100}/>:
-                <div id='agencyDetails'
+                {LoadingAgencyDetails &&<Spinner width={100} height={100}/>}
+                {Object.keys(SelectedAgency).length !=0 && ! LoadingAgencyDetails
+                ?<div id='agencyDetails'
                      className='clearfix' >
-                    AgencyDetails
+                    <p className='agencyDetails-name'>{SelectedAgency.name}</p>
+                    <img src={SelectedAgency.profile.agencyBanner}></img>
                     <span className='closeButton' onClick={this.Close}/>
-                </div>}
+                </div>
+                :<p>Loading ... </p>}
             </div>
             
          );

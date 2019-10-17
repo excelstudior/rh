@@ -26,9 +26,7 @@ class Agencies extends Component {
         }
     }
     onScroll = () =>{
-        let shouldLoadMoreAgencies = scrollToBottom (0);
-
-        console.log ( shouldLoadMoreAgencies );
+        let shouldLoadMoreAgencies = scrollToBottom ();
         shouldLoadMoreAgencies && this.retrieveAgencies();
     }
 
