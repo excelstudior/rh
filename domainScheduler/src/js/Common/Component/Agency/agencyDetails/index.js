@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import Spinner from '../../Common/Spinner/spinner';
 import './agencyDetails.css';
 import '../../../../app.css';
+import AgentCard from '../agentCard/agentCard';
+import Card from '../../Common/Card/Card'
 class AgencyDetails extends Component {
 
     constructor(props){
@@ -38,6 +40,16 @@ class AgencyDetails extends Component {
                      className='clearfix' >
                     <p className='agencyDetails-name'>{SelectedAgency.name}</p>
                     <img src={SelectedAgency.profile.agencyBanner}></img>
+                    <div className='agentsCards'>
+                        {SelectedAgency.agents.map((agent,index)=>{
+                            return <AgentCard key={index}
+                                         imagePath={agent.photo}
+                                         firstName={agent.firstName}
+                                         lastName={agent.lastName}
+                            />
+                        })}
+                    </div>
+                    
                     <span className='closeButton' onClick={this.Close}/>
                 </div>
                 :<p>Loading ... </p>}

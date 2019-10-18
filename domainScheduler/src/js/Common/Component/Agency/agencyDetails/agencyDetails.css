@@ -1,14 +1,31 @@
 #agencyDetails{
     margin:5px;
-
-    overflow-y: auto;
 }
 #agencyDetails img{
  width: 100%;
  height: 100%;
 }
+#agencyDetails .cardMenu img{
+    width: 16px;
+   }
 #agencyDetails p{
     background-color:rgb(245, 243, 243);
     padding:16px;
     font-size: 24px;
+}
+#agencyDetails .agentsCards {
+    display: flex;
+    height:300px;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+#agencyDetails .agentsCards span {
+    display: block;
+    text-align: center;
+}
+#agencyDetails .card{
+    width:220px;
+}
+#agencyDetails .card img{
+    border-radius: 50%;
 }
