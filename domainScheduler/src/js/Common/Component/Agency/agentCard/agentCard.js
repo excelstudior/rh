@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Card from '../../Common/Card/Card';
+import './agentCard.css';
 class AgentCard extends Component {
     
     render() { 
@@ -8,9 +9,9 @@ class AgentCard extends Component {
         return (
             <div className='agentCard'>
                 <Card>
-                <img src={imagePath}></img>
-                <span>{firstName}</span>
-                <span>{lastName}</span>
+                <img className='agentCard-img' src={imagePath}></img>
+                <span className='agentCard-firstName'>{firstName}</span>
+                <span className='agentCard-lastName'>{lastName}</span>
                 </Card>
             </div> 
             

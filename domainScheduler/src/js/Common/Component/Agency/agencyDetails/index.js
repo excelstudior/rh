@@ -36,10 +36,10 @@ class AgencyDetails extends Component {
             {/* //</div><div> */}
                 {LoadingAgencyDetails &&<Spinner width={100} height={100}/>}
                 {Object.keys(SelectedAgency).length !=0 && ! LoadingAgencyDetails
-                ?<div id='agencyDetails'
+                ?<div className='agencyDetails'
                      className='clearfix' >
                     <p className='agencyDetails-name'>{SelectedAgency.name}</p>
-                    <img src={SelectedAgency.profile.agencyBanner}></img>
+                    <img className='agencyDetails-banner' src={SelectedAgency.profile.agencyBanner}></img>
                     <div className='agentsCards'>
                         {SelectedAgency.agents.map((agent,index)=>{
                             return <AgentCard key={index}

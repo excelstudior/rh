@@ -1,31 +1,34 @@
-#agencyDetails{
+.agencyDetails{
     margin:5px;
 }
-#agencyDetails img{
- width: 100%;
- height: 100%;
-}
-#agencyDetails .cardMenu img{
-    width: 16px;
-   }
-#agencyDetails p{
+.agencyDetails-name{
     background-color:rgb(245, 243, 243);
     padding:16px;
     font-size: 24px;
 }
-#agencyDetails .agentsCards {
+.agencyDetails-banner{
+ width: 100%;
+ height: 100%;
+}
+/* .agencyDetails .cardMenu img{
+    width: 16px;
+   } */
+
+/* .agencyDetails .agentsCards {
     display: flex;
     height:300px;
     overflow-x: auto;
     overflow-y: hidden;
-}
-#agencyDetails .agentsCards span {
+} */
+/* .agencyDetails .agentsCards span {
     display: block;
+    margin-top: 5px ;
     text-align: center;
-}
-#agencyDetails .card{
-    width:220px;
-}
-#agencyDetails .card img{
+} */
+/* .agencyDetails .card{
+    width:150px;
+} */
+/* .agencyDetails .card>img:first-child{
     border-radius: 50%;
-}
+    width: 150px;
+} */

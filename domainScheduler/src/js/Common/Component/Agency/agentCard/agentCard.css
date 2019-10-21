@@ -1,0 +1,13 @@
+.agentCard-img{
+    margin:10px auto;
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    border-radius: 50%;
+}
+.agentCard span{
+    margin-bottom: 3px;
+    text-align: center;
+    color:#3c475b;
+    font-weight: 600;
+}
