@@ -1,7 +1,10 @@
+.agentCardsGrp{
+    background-color: red;
+}
+
 .agentCard-img{
     margin:10px auto;
-    width: 150px;
-    height: 150px;
+    width: 80%;
     overflow: hidden;
     border-radius: 50%;
 }

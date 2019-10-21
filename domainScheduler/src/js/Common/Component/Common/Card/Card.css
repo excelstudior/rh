@@ -2,6 +2,6 @@
     display: flex;
     flex-direction: column;
     margin:5px;
-    width: 200px;
+    width: 25%;
     box-shadow: 0 1px 3px rgba(0,0,0,0.08);
 }
