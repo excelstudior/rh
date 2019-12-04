@@ -113,7 +113,7 @@ const config={
             filename:'[name].css'
         })
     ],
-    devtool:'eval-source-map',
+    devtool:'cheap-source-map',
     devServer:{
         watchOptions:{
             ignored:'node_moudules'
