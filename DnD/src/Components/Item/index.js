@@ -11,10 +11,10 @@ const itemSource = {
     },
     endDrag(props,monitor,component){
         //call a function on parent component
-        if (monitor.didDrop()){
-            return props.handleDrop(props.item.id)
+        if (!monitor.didDrop()){
+            return 
         }
-        
+        props.handleDrop(props.item.id)
     }
 }
 

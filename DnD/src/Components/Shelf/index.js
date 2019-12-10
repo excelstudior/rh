@@ -2,12 +2,20 @@ import React, { Component } from 'react';
 import { DropTarget } from 'react-dnd';
 import * as Type from '../constant';
 
+const shelfTarget={
+    drop(props,monitor,component){
+        let dragItem=monitor.getItem();
+        let targetId=component.props.id;
+        //console.log(component,props,monitor,item);
+        props.handleDrop(targetId,dragItem)
+    }
+}
+
 function collect (connect, monitor) {
-    console.log('monitor',monitor)
     return {
         connectDropTarget:connect.dropTarget(),
         hovered:monitor.isOver(),
-       // item:monitor.getItem()
+        item:monitor.getItem()
     }
 }
 
@@ -16,9 +24,9 @@ class Shelf extends Component {
         super(props);
     }
     render() { 
-        const { connectDropTarget,item } = this.props;
+        const { connectDropTarget,id } = this.props;
         return connectDropTarget ( 
-            <div className='shelf'>
+            <div className='shelf' >
                 <ul className='list'>
                     {this.props.children}
                 </ul>
@@ -27,4 +35,4 @@ class Shelf extends Component {
     }
 }
  
-export default DropTarget(Type.TYPE_ITEM,{},collect)(Shelf);
+export default DropTarget(Type.TYPE_ITEM,shelfTarget,collect)(Shelf);

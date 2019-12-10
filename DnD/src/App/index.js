@@ -7,11 +7,24 @@ import HTML5Backend from 'react-dnd-html5-backend';
 import { DragDropContext } from 'react-dnd';
 import Shelf from '../Components/Shelf';
 class App extends Component {
-    state = { items:items }
+    state = { items:items ,
+              shelves:[{id:1,items:[]},{id:2,items:[]}]  
+            }
 
-
-    handleItemDrop = (id) =>{
-        console.log ('droppin',id)
+    handleDropOnShelf = ( shelfId, item) =>{
+        console.log(shelfId,item)
+        let updatedShelves=this.state.shelves.map((shelf)=>{
+            if (shelf.id == shelfId) {
+            shelf.items=[ ...shelf.items, item]
+        }
+            return shelf
+        })
+        this.setState({
+            shelves:updatedShelves
+        })
+    }
+    handleItemDrop = (sourceId,targetId) =>{
+        console.log ('droppin',sourceId)
         // let newItems= this.state.items.filter((item)=>{
         //     return item.id!=id
         // })
@@ -32,11 +45,12 @@ class App extends Component {
                     </Rack>
                 </div>
                 <div className='shelfWrapper'>shelf
-                    <Shelf>
-                    {this.state.items.map((item)=>{
-                           return <Item key={item.id} item={item} handleDrop={this.handleItemDrop}/>
-                        })}
-                    </Shelf>
+                    {this.state.shelves.map((shelf)=>{
+                        let items=shelf.items.map((item)=>{
+                            return <Item key={item.id} item={item} handleDrop={this.handleItemDrop}/>
+                        })
+                       return <Shelf key={shelf.id} id={shelf.id} children={items} handleDrop={this.handleDropOnShelf}/>
+                    })}
                 </div>
                 <div className='cartWrapper'>cart
                     <Cart>
