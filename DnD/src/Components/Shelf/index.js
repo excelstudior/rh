@@ -4,7 +4,8 @@ import * as Type from '../constant';
 
 const shelfTarget={
     drop(props,monitor,component){
-        let dragItem=monitor.getItem();
+        console.log('You drop on me')
+        let dragItem=monitor.getItem().item;
         let targetId=component.props.id;
         //console.log(component,props,monitor,item);
         props.handleDrop(targetId,dragItem)

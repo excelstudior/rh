@@ -1,13 +1,21 @@
 import React, { Component } from 'react';
-import { DragSource } from 'react-dnd';
+import { findDOMNode } from 'react-dom';
+import { DragSource, 
+    DropTarget,
+    ConnectDropTarget,
+    ConnectDragSource,
+    DropTargetMonitor,
+    DropTargetConnector,
+    DragSourceConnector,
+    DragSourceMonitor,} from 'react-dnd';
 import * as Type from '../constant';
+import flow from 'lodash/flow';
 
 
 const itemSource = {
     beginDrag(props){
-       //console.log ('begin drag')
-       //console.log (props)
-        return props.item;
+        return {item:props.item,
+                index:props.index};
     },
     endDrag(props,monitor,component){
         //call a function on parent component
@@ -18,11 +26,42 @@ const itemSource = {
     }
 }
 
-function collect (connect,monitor) {
+function collectSource (connect,monitor) {
     return {
         connectDragSource:connect.dragSource(),
         connectDragPreview:connect.dragPreview(),
         isDragging:monitor.isDragging(),
+    }
+}
+
+const itemTarget = {
+    hover (props,monitor,component) {
+        const dragIndex = monitor.getItem().index;
+        const hoverIndex = props.index;
+        // console.log( component)
+        // console.log( monitor)
+        //Element.getBoundingClientRect()
+        const hoverBoundingRect = (findDOMNode(
+            component,
+          )).getBoundingClientRect();
+         // console.log(hoverBoundingRect);
+        if ( dragIndex == hoverIndex ){
+            return;
+        } 
+        console.log('dragging ',dragIndex)
+        console.log('hoverring on ',hoverIndex);
+        const hoverMiddleY= (hoverBoundingRect.bottom-hoverBoundingRect.top)/2
+        const clientOffset= monitor.getClientOffset();
+        console.log(clientOffset)
+        const hoverClientY = (clientOffset).y - hoverBoundingRect.top;
+
+    }
+}
+
+function collectTarget (connect,monitor) {
+    return {
+        connectDropTarget:connect.dropTarget(),
+    
     }
 
 }
@@ -34,16 +73,21 @@ class Item extends Component {
     }
     
     render() { 
-       // console.log (this.props);
-        const {isDragging,connectDragSource,item} = this.props;
+        const { isDragging, connectDragSource, connectDropTarget, item } = this.props;
         let backgroundColor = isDragging ? item.color : '#fff';
-        return connectDragSource( 
-            <li className='item' vaule={item.id} style={{backgroundColor:backgroundColor}}>
+        console.log(item)
+        return( 
+            connectDragSource &&
+            connectDropTarget &&
+            connectDragSource( 
+            connectDropTarget(<li className='item' vaule={item.id} style={{backgroundColor:backgroundColor,cursor:'move'}}>
                 {item.name}
-            </li>
-         );
+            </li>)
+         ));
     }
 }
  
-export default DragSource(Type.TYPE_ITEM,itemSource,collect)(Item);
-
+export default flow(
+    DragSource(Type.TYPE_ITEM,itemSource,collectSource),
+    DropTarget(Type.TYPE_ITEM,itemTarget,collectTarget)
+)(Item);

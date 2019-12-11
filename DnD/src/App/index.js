@@ -39,15 +39,23 @@ class App extends Component {
             <div>
                 <div className='rackWrapper'>rack
                     <Rack>
-                        {this.state.items.map((item)=>{
-                           return <Item key={item.id} item={item} handleDrop={this.handleItemDrop}/>
+                        {this.state.items.map((item,i)=>{
+                           return <Item key={i} 
+                                        item={item} 
+                                        index={i}
+                                        id={item.id}
+                                        handleDrop={this.handleItemDrop}/>
                         })}
                     </Rack>
                 </div>
                 <div className='shelfWrapper'>shelf
                     {this.state.shelves.map((shelf)=>{
-                        let items=shelf.items.map((item)=>{
-                            return <Item key={item.id} item={item} handleDrop={this.handleItemDrop}/>
+                        let items=shelf.items.map((item,i)=>{
+                           return <Item key={i} 
+                                        item={item} 
+                                        index={i}
+                                        id={item.id}
+                                        handleDrop={this.handleItemDrop}/>
                         })
                        return <Shelf key={shelf.id} id={shelf.id} children={items} handleDrop={this.handleDropOnShelf}/>
                     })}
