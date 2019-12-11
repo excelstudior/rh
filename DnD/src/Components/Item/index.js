@@ -48,13 +48,17 @@ const itemTarget = {
         if ( dragIndex == hoverIndex ){
             return;
         } 
-        console.log('dragging ',dragIndex)
-        console.log('hoverring on ',hoverIndex);
+        //console.log('dragging ',dragIndex)
+        //console.log('hoverring on ',hoverIndex);
         const hoverMiddleY= (hoverBoundingRect.bottom-hoverBoundingRect.top)/2
         const clientOffset= monitor.getClientOffset();
-        console.log(clientOffset)
+        //console.log(clientOffset,hoverBoundingRect)
+        
         const hoverClientY = (clientOffset).y - hoverBoundingRect.top;
-
+        if (hoverMiddleY-hoverClientY<0){
+            console.log(hoverMiddleY,hoverClientY,hoverMiddleY-hoverClientY,dragIndex,hoverIndex)
+        }
+        
     }
 }
 

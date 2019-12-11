@@ -11,6 +11,11 @@ class App extends Component {
               shelves:[{id:1,items:[]},{id:2,items:[]}]  
             }
 
+    clearShelf = () =>{
+        this.setState({
+            shelves:[{id:1,items:[]},{id:2,items:[]}]  
+        })
+    }
     handleDropOnShelf = ( shelfId, item) =>{
         console.log(shelfId,item)
         let updatedShelves=this.state.shelves.map((shelf)=>{
@@ -48,7 +53,9 @@ class App extends Component {
                         })}
                     </Rack>
                 </div>
-                <div className='shelfWrapper'>shelf
+                <div className='shelfWrapper'>
+                    <p>Shelf</p>
+                    <button onClick={this.clearShelf}>clear shelf</button>
                     {this.state.shelves.map((shelf)=>{
                         let items=shelf.items.map((item,i)=>{
                            return <Item key={i} 
