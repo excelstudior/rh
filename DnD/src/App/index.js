@@ -11,6 +11,13 @@ class App extends Component {
               shelves:[{id:1,items:[]},{id:2,items:[]}]  
             }
 
+
+    moveItems = ( dragIndex, hoverIndex ) =>{
+        console.log('dragging ', dragIndex )
+        console.log('hover', hoverIndex )
+    }
+
+
     clearShelf = () =>{
         this.setState({
             shelves:[{id:1,items:[]},{id:2,items:[]}]  
@@ -20,7 +27,9 @@ class App extends Component {
         console.log(shelfId,item)
         let updatedShelves=this.state.shelves.map((shelf)=>{
             if (shelf.id == shelfId) {
-            shelf.items=[ ...shelf.items, item]
+                if (!(shelf.items.some(item))){
+                    shelf.items=[ ...shelf.items, item]
+                }
         }
             return shelf
         })
@@ -30,13 +39,6 @@ class App extends Component {
     }
     handleItemDrop = (sourceId,targetId) =>{
         console.log ('droppin',sourceId)
-        // let newItems= this.state.items.filter((item)=>{
-        //     return item.id!=id
-        // })
-        // console.log(newItems);
-        // this.setState({
-        //     items:newItems
-        // })
     }
 
     render() { 
@@ -49,7 +51,8 @@ class App extends Component {
                                         item={item} 
                                         index={i}
                                         id={item.id}
-                                        handleDrop={this.handleItemDrop}/>
+                                        handleDrop={this.handleItemDrop}
+                                        moveItems={this.moveItems}/>
                         })}
                     </Rack>
                 </div>
@@ -62,7 +65,8 @@ class App extends Component {
                                         item={item} 
                                         index={i}
                                         id={item.id}
-                                        handleDrop={this.handleItemDrop}/>
+                                        handleDrop={this.handleItemDrop}
+                                        moveItems={this.moveItems}/>
                         })
                        return <Shelf key={shelf.id} id={shelf.id} children={items} handleDrop={this.handleDropOnShelf}/>
                     })}

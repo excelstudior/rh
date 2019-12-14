@@ -55,9 +55,28 @@ const itemTarget = {
         //console.log(clientOffset,hoverBoundingRect)
         
         const hoverClientY = (clientOffset).y - hoverBoundingRect.top;
-        if (hoverMiddleY-hoverClientY<0){
-            console.log(hoverMiddleY,hoverClientY,hoverMiddleY-hoverClientY,dragIndex,hoverIndex)
-        }
+        // if (hoverMiddleY-hoverClientY<0){
+        //     console.log(hoverMiddleY,hoverClientY,hoverMiddleY-hoverClientY,dragIndex,hoverIndex)
+        // }
+        if (dragIndex < hoverIndex && hoverClientY < hoverMiddleY) {
+           // console.log('dragIndex < hoverIndex && hoverClientY < hoverMiddleY')
+            return;
+          }
+      
+          // Dragging upwards
+          if (dragIndex > hoverIndex && hoverClientY > hoverMiddleY) {
+           // console.log('dragIndex > hoverIndex && hoverClientY > hoverMiddleY')
+            return;
+          }
+      
+          // Time to actually perform the action
+          props.moveItems(dragIndex, hoverIndex);
+      
+          // Note: we're mutating the monitor item here!
+          // Generally it's better to avoid mutations,
+          // but it's good here for the sake of performance
+          // to avoid expensive index searches.
+          monitor.getItem().index = hoverIndex;
         
     }
 }
