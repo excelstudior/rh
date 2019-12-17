@@ -27,7 +27,7 @@ class App extends Component {
         console.log(shelfId,item)
         let updatedShelves=this.state.shelves.map((shelf)=>{
             if (shelf.id == shelfId) {
-                if (!(shelf.items.some(item))){
+                if (!(shelf.items.indexOf(item)>-1)){
                     shelf.items=[ ...shelf.items, item]
                 }
         }
