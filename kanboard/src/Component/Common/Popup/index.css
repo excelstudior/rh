@@ -1,0 +1,25 @@
+.popup{
+    margin: 20px auto;
+    z-index: 1;
+    color:rgb(44, 43, 43);
+}
+.popup-title{
+    padding: 8px;
+    font-size: 16px;
+    font-weight: 600;
+}
+.popup-title span{
+    float: right;
+}
+.popup-message{
+    padding: 8px;
+    font-size: 14px;
+}
+.popup-buttons{
+    padding: 8px;
+    font-size: 14px;
+}
+.popup-error{
+    border: red 1px solid;
+    background-color: rgb(245, 159, 159);
+}
