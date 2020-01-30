@@ -2,7 +2,9 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types';
 import { withRouter,Redirect } from 'react-router';
 import { connect } from 'react-redux';
-import { isAuthenticated } from '../../../Util/tool';
+import { isAuthenticated,signInWithRefreshToken,hasAuthenticationExpired } from '../../../Util/tool';
+import { signInSuccess } from '../Login/action';
+import { EL } from '../constant';
 
 
 class AuthCheck extends React.Component {
@@ -11,15 +13,36 @@ class AuthCheck extends React.Component {
         this.delay=null
     }
 
+    redirectAfterSignIn = (path,userName) =>{
+        this.props.signInSuccess(userName);
+        this.props.history.replace(path);
+        
+    }
     componentDidMount(){
-        if ( !isAuthenticated()){
+        let tokens=localStorage.getItem(EL);
+        if (!isAuthenticated(tokens)){
            this.delay=setTimeout(() => {
                 this.props.history.replace('/Login');
            }, 2000);
         } else {
-            this.delay=setTimeout(() => {
-                this.props.history.replace('/Dashboard');
-           }, 2000);
+            let expired=hasAuthenticationExpired(tokens);
+            if (expired){
+                signInWithRefreshToken().then((data)=>{
+                let tokens=JSON.stringify(data)
+                localStorage.setItem(EL,tokens);
+                this.redirectAfterSignIn('/Dashboard',data.userName)
+           
+            }).catch(err=>{
+                this.props.history.replace('/Login');
+            })
+            } else{
+                let tokens=localStorage.getItem(EL);
+                tokens=JSON.parse(tokens);
+                this.redirectAfterSignIn('/Dashboard',tokens.userName);
+               
+            }
+            
+     
         }
     }
     componentWillUnmount(){
@@ -46,7 +69,7 @@ function mapStateToProps(state, ownProps) {
 }
 function mapDispatchToProps(dispatch) {
     return {
-       
+       signInSuccess:(userName) => dispatch(signInSuccess(userName))
     };
 }
 export default withRouter(connect(mapStateToProps,mapDispatchToProps)(AuthCheck));

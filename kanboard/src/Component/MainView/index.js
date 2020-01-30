@@ -1,29 +1,28 @@
-import React, { Component } from 'react'
+import React from 'react';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import Header from '../Common/Header/index';
-import { getUserPermissions } from  '../Dashboard/action';
+import { getUserPermissions } from  '../MainView/action';
+import Dashboard from '../Dashboard/index';
 
-class Dashboard extends React.Component {
+class MainView extends React.Component {
     constructor(props, context) {
         super(props, context);
-        this.props.getUserPermissions();
+        
     }
-
 
     render() {
         return (
-            <div className='dashboard'>
-                {/* <Header/> */}
-               I am Dashboard
+            <div className='mainview'>
             </div>
         );
     }
 }
 
-Dashboard.propTypes = {
- 
+MainView.propTypes = {
+    
 };
 
 function mapStateToProps(state, ownProps) {
@@ -36,4 +35,4 @@ function mapDispatchToProps(dispatch) {
        getUserPermissions:()=>{dispatch(getUserPermissions())}
     };
 }
-export default withRouter(connect(mapStateToProps,mapDispatchToProps)(Dashboard));
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(MainView));

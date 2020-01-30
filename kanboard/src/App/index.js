@@ -4,7 +4,8 @@ import { Provider } from 'react-redux';
 import store from './store';
 import HTML5Backend from 'react-dnd-html5-backend';
 import { DragDropContext } from 'react-dnd';
-import { Link,Route, Switch }from 'react-router-dom';
+import { Route, Switch,Link }from 'react-router-dom';
+import Header from '../Component/Common/Header/index';
 import routes from './routes';
 
 
@@ -25,9 +26,9 @@ class App extends React.Component {
         })}
 
     render() {
-        console.log(this.props)
         return (
             <Provider store={store}>
+                <Header/>
                 <Switch>
                    {this.renderRoutes(routes)}
                 </Switch>

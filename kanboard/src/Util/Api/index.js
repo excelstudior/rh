@@ -1,14 +1,16 @@
 import queryString from 'query-string';
 import { RSAA } from 'redux-api-middleware';
-//import { DOMAIN_TIMEOUT } from '../Domain/Endpoint/domain';
-// export const isConnectingToApi = (apiName) => {
-//     let api= localStorage.getItem(apiName);
-//     if ( api === null ){
-//         return false;
-//     }
-//     let expires_in=new Date(JSON.parse(api).expires_in);
-//     return Date.now()<expires_in.getTime()? true : false
-// }
+import {EL_API_ROOT_URL} from 'appConfigs';
+import {EL} from '../../Component/Auth/constant';
+
+function getRootApiURL (apiName){
+    switch(apiName){
+        case EL:
+            return EL_API_ROOT_URL
+        default:
+        return ''
+    }
+}
 
 export function callApi(endpoint,method,types,data,apiName) {
     return function (dispatch) {
@@ -21,14 +23,12 @@ export function callApi(endpoint,method,types,data,apiName) {
 
 export function asyncCallApi(endpoint,method,types,data,apiName){
     let token=JSON.parse(localStorage.getItem(apiName))
-    //if token doesn't exists return action that handle timeout
-   // if (!token) { return { type : DOMAIN_TIMEOUT } };
-
+    let rootURL=getRootApiURL(apiName);
     let body = JSON.stringify(data);
     if (method=='POST' || method=='PUT') {
         return {
             [RSAA]:{
-                endpoint:endpoint,
+                endpoint:rootURL+'/'+endpoint,
                 method:method,
                 types:types,
                 body:body,
@@ -40,11 +40,10 @@ export function asyncCallApi(endpoint,method,types,data,apiName){
             }
         }
     } else {
-        endpoint= data != null || data != '' ? 
-                 endpoint+'?'+queryString.stringify(data) : endpoint;
+        endpoint=endpoint+'?'+queryString.stringify(data);
         return {
             [RSAA]:{
-                endpoint:endpoint,
+                endpoint:rootURL+'/'+endpoint,
                 method:method,
                 types:types,
                 headers: {

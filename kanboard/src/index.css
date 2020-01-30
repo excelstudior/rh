@@ -25,7 +25,7 @@ html, body, div, span, applet, object, iframe,
     }
     body {
         line-height: 1;
-        font-family:sans-serif,Tahoma,'Segoe UI', Verdana ;
+        font-family:Helvetica,sans-serif,Tahoma,'Segoe UI', Verdana ;
         background-color:#fff;
     }
     ol, ul {

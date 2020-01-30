@@ -1,0 +1,18 @@
+.header{
+    background-color: royalblue;
+    width: 100%;
+    
+}
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.header-right{
+    float: right;
+   /* // background-color: saddlebrown; */
+}
+.header-left{
+    float: left;
+}

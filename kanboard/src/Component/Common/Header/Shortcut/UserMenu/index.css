@@ -1,0 +1,50 @@
+/* .userinfo div{
+    
+
+} */
+.usermenu-initial{
+    width: 30px;
+    border-radius: 50%;
+    color: royalblue;
+    background-color: seashell;
+    text-align: center;
+    font-size: 18px;
+    border:10px solid royalblue;
+}
+.usermenu:hover>div{
+    visibility: visible;
+}
+.usermenu-dropdown{
+    position: absolute;
+    z-index: 1;
+    right:0;
+    visibility: hidden;
+    color: #404040;
+    background-color:#ffe;
+    font-size: 12px;
+}
+/* .usermenu-dropdown i{
+    display: inline-block;
+} */
+.usermenu-dropdown li{
+    border-left:#ffe 5px solid;
+}
+
+.usermenu-dropdown li:hover{
+    color: #101010;
+    background-color:#eee;
+    border-left:#404040 5px solid;
+}
+.usermenu-dropdown a,.usermenu-dropdown span{
+    /* display: block; */
+    
+    min-width: 110px; 
+    padding: 3px 10px;
+    
+}
+.usermenu-dropdown i{
+    margin-left: 10px;
+}
+/* .usermenu-dropdown a:hover,.usermenu-dropdown span:hover{
+    border-left:#404040 5px solid;
+} */
