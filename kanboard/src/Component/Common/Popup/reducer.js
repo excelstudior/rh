@@ -1,5 +1,5 @@
-import { USER_SIGN_IN_ERROR } from '../../Auth/constant';
-import { INVALID_LOG_IN_INFO, 
+import { USER_SIGN_IN_ERROR,USER_LOGOUT_SUCCESS } from '../../Auth/constant';
+import { INVALID_LOG_IN_INFO, LOGOUT_SUCCESSFULLY,POPUP_TYPE_INFO,
         POPUP_TYPE_ERROR,
         POPUP_CLOSE } from '../Popup/constant';
 
@@ -18,7 +18,13 @@ const popup = (state=defaultState,action) =>{
                 message:INVALID_LOG_IN_INFO,
                 type:POPUP_TYPE_ERROR,
                 show:true,
-                onConfirm:()=>{}
+            }
+
+        case USER_LOGOUT_SUCCESS:
+            return {...state,
+                message:LOGOUT_SUCCESSFULLY,
+                type:POPUP_TYPE_INFO,
+                show:true
             }
         case POPUP_CLOSE:
             return defaultState

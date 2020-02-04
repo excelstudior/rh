@@ -1,7 +1,7 @@
 import { USER_SIGN_IN_SUCCESS,
     GET_USER_INFO_FAILED,
     GET_USER_INFO_SUCCESS,
-    GET_USER_INFO_REQUEST,}from './constant';
+    GET_USER_INFO_REQUEST,USER_LOGOUT_SUCCESS}from './constant';
 
 const defaultState={
     user:'',
@@ -19,6 +19,8 @@ const auth=(state=defaultState,action)=>{
                 ...state,
                 userInfo:action.payload[0]
             }
+        case USER_LOGOUT_SUCCESS:
+            return defaultState
     default:return state
     }
     

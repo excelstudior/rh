@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import {EL} from '../constant';
 import { USERMENU_LOGOUT } from '../../Common/Header/Shortcut/UserMenu/constant'
-import { logOutSuccess } from './action';
+import  {logOutSuccess}  from './action';
 class Logout extends React.Component {
     constructor(props, context) {
         super(props, context);
@@ -13,8 +13,8 @@ class Logout extends React.Component {
 
     handleUserLogout = () =>{
         localStorage.removeItem(EL);
-        //this.props.logOutSuccess()
-        this.props.history.replace('/')
+        this.props.logOutSuccess();
+        this.props.history.replace('/Login')
         // location.reload();
     }
     render() {
@@ -36,7 +36,7 @@ function mapStateToProps(state, ownProps) {
 }
 function mapDispatchToProps(dispatch) {
     return {
-        logoutSuccess: dispatch(logOutSuccess()),
+        logOutSuccess: ()=> dispatch(logOutSuccess()),
     };
 }
 export default withRouter(connect(mapStateToProps,mapDispatchToProps)(Logout))

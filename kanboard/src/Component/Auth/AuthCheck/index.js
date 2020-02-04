@@ -21,9 +21,7 @@ class AuthCheck extends React.Component {
     componentDidMount(){
         let tokens=localStorage.getItem(EL);
         if (!isAuthenticated(tokens)){
-           this.delay=setTimeout(() => {
                 this.props.history.replace('/Login');
-           }, 2000);
         } else {
             let expired=hasAuthenticationExpired(tokens);
             if (expired){
