@@ -67,7 +67,7 @@ class Login extends React.Component {
                                         id='cbk-rememberme'
                                         name='rememberme'
                                         type='checkbox'/>
-                                        <label for='cbk-rememberme'></label>
+                                        <label htmlFor='cbk-rememberme'></label>
                                         <div></div>
                                 </div>
                                 <label>Remember Me</label>
