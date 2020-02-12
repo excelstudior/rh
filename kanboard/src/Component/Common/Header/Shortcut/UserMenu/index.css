@@ -19,20 +19,20 @@
     z-index: 1;
     right:0;
     visibility: hidden;
-    color: #404040;
-    background-color:#ffe;
+    color: #253031;
+    background-color:#f6f6f6;
     font-size: 12px;
 }
 /* .usermenu-dropdown i{
     display: inline-block;
 } */
 .usermenu-dropdown li{
-    border-left:#ffe 5px solid;
+    border-left:#f6f6f6 5px solid;
 }
 
 .usermenu-dropdown li:hover{
     color: #101010;
-    background-color:#eee;
+    background-color:#d6d6d6;
     border-left:#404040 5px solid;
 }
 .usermenu-dropdown a,.usermenu-dropdown span{

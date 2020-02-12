@@ -11,15 +11,8 @@ class Popup extends React.Component {
         this.popup=React.createRef()
         
     }
-    getPopupStyling = (type) =>{
-        switch(type){
-            case POPUP_TYPE_ERROR:
-               return 'popup-error';
-            case POPUP_TYPE_INFO:
-               return 'popup-info';
-            default:
-                return ''
-        }
+    getPopupStyling = (type,position) =>{
+        return 'popup '+type+' '+position;
     }
     renderFooter =() =>{
         switch (this.props.popup.type){
@@ -34,7 +27,7 @@ class Popup extends React.Component {
                                          
     }
     renderPopupContainer = (popup) =>{
-        let style=this.getPopupStyling(this.props.popup.type)
+        let style=this.getPopupStyling(popup.type,popup.showPosition)
         return(
             <div className={style} >
                 {this.renderTitle()}
@@ -45,7 +38,7 @@ class Popup extends React.Component {
     }
     render() {
         let { popup }=this.props;
-        return  popup.show && this.renderPopupContainer(popup)
+        return  this.renderPopupContainer(popup)
     }
 }
 

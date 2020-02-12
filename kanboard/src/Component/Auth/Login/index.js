@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import * as actions from './action';
 import Popup from '../../Common/Popup/index';
+// import PPL from '../../../Asset/Image/ppl_orig.jpg';
+import './index.css';
 class Login extends React.Component {
     constructor(props) {
         super(props);
@@ -32,26 +34,49 @@ class Login extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className='login'>
                 <Popup/>
-            <form onSubmit={this.handleSubmit}>
-                <h1>Login</h1>
-                    <div>
-                        <label>Username</label>
-                        <input onChange={this.onTextChange}
-                               name='username'
-                               type='text'
-                               placeholder='Please type your username' />
+                <div className='login-wrapper clearfix'>
+                    <div className='login-logo'>
+                        {/* <img src={PPL}/> */}
                     </div>
-                    <div>
-                        <label>Passwords</label>
-                        <input onChange={this.onTextChange}
-                               name='password'
-                               type='password'
-                               placeholder='Please type your passwords'/>
+                    <div className='login-form'>
+                        <form onSubmit={this.handleSubmit}>
+                            <div>
+                                <fieldset>
+                                    <legend>Username</legend>
+                                    <input onChange={this.onTextChange}
+                                        name='username'
+                                        type='text'
+                                        />
+                                </fieldset>
+                                
+                            </div>
+                            <div>
+                                <fieldset>
+                                    <legend>Passwords</legend>
+                                    <input onChange={this.onTextChange}
+                                    name='password'
+                                    type='password'
+                                    />
+                                </fieldset>
+                            </div>
+                            <div className='login-rememberme'>
+                                <div className='flatCbkRememberMe'>
+                                    <input onChange={this.onTextChange}
+                                        id='cbk-rememberme'
+                                        name='rememberme'
+                                        type='checkbox'/>
+                                        <label for='cbk-rememberme'></label>
+                                        <div></div>
+                                </div>
+                                <label>Remember Me</label>
+                            </div>
+                            
+                        <button>Log In</button>              
+                    </form>
                     </div>
-                <button>Log In</button>              
-            </form>
+                </div>
             </div>
         );
     }

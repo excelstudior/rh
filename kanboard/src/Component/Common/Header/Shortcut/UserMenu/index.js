@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import './index.css';
-import { USERMENU_INFO,USERMENU_SETTINGS,USERMENU_LOGOUT } from './constant';
+import { USERMENU_INFO,USERMENU_SETTINGS} from './constant';
 import Logout from '../../../../Auth/Logout/index';
 
 class UserMenu extends React.Component {
@@ -20,7 +20,6 @@ class UserMenu extends React.Component {
                     <ul>
                         <li><i className="fa fa-cog"></i><a>{USERMENU_SETTINGS}</a></li>
                         <li><i className="fa fa-user"></i><span>{USERMENU_INFO}</span></li>
-                        <li><i className="fa fa-sign-out"></i><span>{USERMENU_LOGOUT}</span></li>
                         <Logout/>
                     </ul>
                 </div>

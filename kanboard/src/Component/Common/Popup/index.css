@@ -1,7 +1,13 @@
 .popup{
-    margin: 20px auto;
+    position: absolute;
+    width: 30%;
+    left: 50%;
+    margin-top:-1116px;
+    margin-left: -15%;
     z-index: 1;
     color:rgb(44, 43, 43);
+    transition:all 1s ease-in-out;
+    
 }
 .popup-title{
     padding: 8px;
@@ -12,12 +18,19 @@
     float: right;
 }
 .popup-message{
+    text-align: center;
     padding: 8px;
     font-size: 14px;
+    line-height: 1.6;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
 }
 .popup-buttons{
     padding: 8px;
     font-size: 14px;
+}
+.popup-top{
+    margin-top:50px;
 }
 .popup-error{
     border: red 1px solid;

@@ -38,14 +38,14 @@
     background-color: #1139f1;
 }
 .navMenu-side {
-    color: #404040;
-    border-left:#ffe 5px solid;
-    background-color:#ffe;
+    color: #253031;
+    border-left:#f6f6f6 5px solid;
+    background-color:#f6f6f6;
     z-index: 1;
 }
 .navMenu-side:hover {
     color: #101010;
-    background-color:#eee;
+    /* background-color:#f6f6f6; */
     border-left:#404040 5px solid;
     cursor:pointer;
 }
@@ -53,8 +53,11 @@
     display: inline-block;
 }
 .navMenu-side ul li{
-    background-color: #eea;
-    border-left:#eea 5px solid;
+    display: flex;
+    align-items: center;
+    background-color: #d6d6d6;
+    border-left:#d6d6d6 5px solid;
+    
 }
 .navMenu-side > a,.navMenu-side>span{
     min-width: 100px; 
