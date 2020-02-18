@@ -42,8 +42,8 @@
 }
 
 .login-form input:focus{
-    background-color: #7fa6c7;
-    color:#fff
+    /* background-color: #7fa6c7; */
+    color:#508ABC;
 }
 
 .login-form fieldset{
@@ -53,6 +53,9 @@
 .login-form fieldset legend{
     font-size: 12px;
     padding:0px 10px;
+}
+.login-form fieldset input{
+    margin: auto 5px;
 }
 .login-form input[type=checkbox]{
     appearance: none;
@@ -76,7 +79,7 @@
 }
 
 .flatCbkRememberMe{
-    width: 15px;
+    width: 16px;
     height: 16px;
     margin: 20px 25px 20px 0px;
     position: relative;
@@ -99,7 +102,7 @@
     content: '';
     /* background: #7fa6c7; */
     position: relative;
-    top:-3.5px;
+    top:-3.8px;
     border-radius:50% ;
 
 }
@@ -111,15 +114,15 @@
     content: '';
     /* background: #7fa6c7; */
     position: relative;
-    top:-3.5px;
+    top:-3.8px;
     border-radius:50% ;
 
 }
 .flatCbkRememberMe label[for='cbk-rememberme']
 {
     display: block;
-    width: 10px;
-    height: 10px;
+    width: 11px;
+    height: 11px;
     border-radius: 50%;
     transition: all .5s ease;
     cursor: pointer;
@@ -187,5 +190,13 @@
         margin-left:-150px;
         margin-top:-250px;
         background-position:top;
+    }
+    .login-logo{
+        width: 100%;
+        height: 30%;
+    }
+    .login-form{
+        width: 100%;
+        height: 65%;
     }
 }
