@@ -1,0 +1,19 @@
+body{
+    margin: 0;
+    /* background-color: #444; */
+    background-image: url(./images/casual-characters_23-2147508039.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+
+}
+h1{
+    margin: 0;
+    height: 100vh;
+    color:white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 5em;
+    font-family: sans-serif;
+    text-shadow: 0 0 20px #039;    
+}
