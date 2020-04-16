@@ -1,24 +1,29 @@
 const path=require('path');
 const webpack=require("webpack");
+const cssNano=require('cssnano');
 const htmlWebpackPlugin=require("html-webpack-plugin");
 const autoprefixer=require('autoprefixer');
+const {CleanWebpackPlugin}=require('clean-webpack-plugin');
+const miniCssExtractPlugin=require('mini-css-extract-plugin');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+//const minifyPlugin=require('babel-minify-webpack-plugin');
+const uglifyJSPlugin=require('uglifyjs-webpack-plugin');
+
+const SOURCE_DIR = path.resolve(__dirname,'src');
+const OUTPUT_DIR = path.resolve(__dirname,'dist');
+
 module.exports={
     entry:{
-        index:['babel-runtime/regenerator'
-        ,'@babel/register'
-        ,'webpack-hot-middleware/client?reload=true'
-        ,'./src/index.js']
+        index:path.join(SOURCE_DIR,'index.js')
     },
-    mode:'development',
+    mode:'production',
     output:{
         filename:'bundle.js',
-        path:path.resolve(__dirname,'dist'),
-        // publicPath:'/'
+        path:OUTPUT_DIR,
     },
     devServer:{
         contentBase:'dist',
         overlay:true,
-        hot:true,
         stats:{colors:true}
     },
     module:{
@@ -36,7 +41,9 @@ module.exports={
             {
                 test:/\.css$/,
                 use:[
-                    {loader:"style-loader"},
+                    {
+                        loader:miniCssExtractPlugin.loader
+                    },
                     {
                         loader:"css-loader",
                     },
@@ -69,18 +76,29 @@ module.exports={
         ]
     },
     plugins:[
-        new webpack.HotModuleReplacementPlugin(),
+        new CleanWebpackPlugin(), 
+        new miniCssExtractPlugin(),
+        new OptimizeCssAssetsPlugin({
+            assetNameRegExp:/\.css$/g,
+            cssProcessor:cssNano,
+            cssProcessorOptions:{ discardComments:{
+                removeAll:true
+            }},
+            canPrint:true
+        }),
+        new webpack.DefinePlugin({
+            'process.env':{
+                'NODE_ENV':JSON.stringify('production')
+            }
+        }),
         new htmlWebpackPlugin({
            
             template:"./src/index.html",
             title:"Amingo"
 
-        })
-        // new webpack.DefinePlugin({
-        //     'process.env':{
-        //         'NODE_ENV':JSON.stringify('production')
-        //     }
-        // })
+        }),
+        // new minifyPlugin(),
+        new uglifyJSPlugin()
     ]
 
 }

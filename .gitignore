@@ -62,3 +62,6 @@ typings/
 package-lock.json
 configs
 Config
+test.txt
+firebaseui-web-react
+firebaseTest
