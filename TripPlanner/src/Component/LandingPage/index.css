@@ -1,0 +1,47 @@
+.landingPage::after{
+    /* height: 100vh; */
+    background-image: url(../../images/casual-characters.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    content:"";
+    opacity: 0.8;
+    position: absolute;
+    top:0;
+    left:0;
+    bottom: 0;
+    right:0;
+    z-index: -1;
+}
+.landingPage-options{
+    background-color: #fff;
+    position:absolute;
+    width: 300px;
+    height: 400px;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    border-radius: 10px;
+    box-shadow:  0px 0px 25px 10px #a6a6a6;
+
+}
+.landingPage-options h1{
+    display: block;
+    padding: 60px 20px 60px 20px;
+    color:coral;
+    font-size: 2em;
+    text-align:center;
+}
+.landingPage-button span{
+    display: block;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+}
+.landingPage-button span:nth-child(odd){
+    background-color: coral;
+    color: #fff;
+}
+.landingPage-button span:nth-child(even){
+    background-color: #fff;
+    color: coral;
+}

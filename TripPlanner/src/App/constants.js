@@ -1,0 +1,11 @@
+export const TITLE='GO GO AMINGO';
+export const SIGNIN='SIGN IN';
+export const SIGNINASGUEST='CONTINUE AS GUEST';
+export const SIGNUP='SIGN UP';
+export const BACK='BACK';
+export const CANCEL='CANCEL';
+export const MODE_GUEST='MODE_GUEST';
+export const MODE_USER='MODE_USER';
+export const MODE_FUEL='MODE_FUEL'
+export const FUEL_PRICE_CHECK='CHECK FUEL PRICES'
+export const BUTTON_REFRESH_ALL_FUEL_PRICES='REFRESH ALL FUEL PRICES';
