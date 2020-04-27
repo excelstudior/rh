@@ -1,25 +1,148 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import './index.css'
+import './index.css';
+import { SELECT_ALL } from './constant';
+
 
 export class MultiSelector extends Component {
+
+    constructor(props){
+        super(props)
+        this.state={
+            availableiItems:this.props.items,
+            checkedItems:[],
+        }
+    }
+
+    componentWillMount(){
+        this.setState({
+            checkedItems:this.props.selectedItems
+        })
+    }
+    isAllItemsAreSelected = (items,selectedItems) =>{
+       for(let i=0;i<items.length;i++){
+           let selectedAll=selectedItems.indexOf(items[i])==-1
+           if (selectedAll) return false
+       }
+       return true 
+    }
+
+    
+    filterSelectAllOption = () =>{
+        let checkedItems=this.getCheckItems();
+        if (checkedItems.indexOf(SELECT_ALL)>-1){
+            return checkedItems.filter((item)=>{
+                if (item != SELECT_ALL) {
+                    return item
+                }
+            })
+        }
+        return checkedItems
+    }
+    getAvailableItemsList = () =>{
+        let title=this.props.headerTitle;
+        if(title == undefined || title == '') { title ='non-titled'} 
+        let itemListId='multiselector-itemlist-'+(this.props.headerTitle).toLowerCase().replace(' ','-')
+        let contents=document.getElementById(itemListId)
+        return contents.childNodes;
+    }
+    getCheckItems = ()=>{
+        let items=this.getAvailableItemsList()
+        let checkedItems=[];
+        for (let i=0;i<items.length;i++){
+            let nodes=items[i].childNodes
+            for (let j=0;j<nodes.length;j++){
+                if(nodes[j].type=='checkbox' && nodes[j].checked){
+                    checkedItems.push(nodes[j].id)
+                }
+            }
+        }
+        return checkedItems
+    }
+    onUpdateChanges =()=>{
+        this.props.postCheckItems(this.state.checkedItems)
+    }
+    onCancelChanges = ()=>{
+        this.setState({
+            checkedItems:this.props.selectedItems
+        })
+    }
+    onItemCheckedChange=()=>{
+        if (event.target.id==SELECT_ALL){
+            if (event.target.checked) {
+                let availableiItems=this.state.availableiItems;
+                return this.setState({
+                    checkedItems:availableiItems
+                })
+            } else {
+                return this.setState({
+                    checkedItems:[]
+                })  
+            }
+        }
+        let items=this.filterSelectAllOption();
+        this.setState({
+            checkedItems:items
+        })
+
+    }
+
     render() {
-        let {styling}=this.props;
+        let { headerPosition, headerTextOrientation,headerTitle }=this.props;
+        let { availableiItems,checkedItems } = this.state;
+        let bodyLeftOffset='';
+        if (headerTextOrientation == undefined) {
+            headerTextOrientation='';
+        }
+        if (headerPosition=='multiselector-header-left'){
+            bodyLeftOffset='multiselector-body-offset-left'
+        }
+        if (headerPosition=='multiselector-header-top'){
+            bodyLeftOffset='multiselector-body-offset-top'
+        }
+        let mulselectorItemListId = headerTitle == undefined || headerTitle == ''? headerTitle ='non-titled'
+                                                                    :'multiselector-itemlist-'+(headerTitle).toLowerCase().replace(' ','-')
+        let isAllSelected=this.isAllItemsAreSelected(availableiItems,checkedItems)
         return (
             <div className='multiselector'>
-                <div className={styling}>
-                    <div className='multiselector-header'>header</div>
-                    <div className='multiselector-body'>
+                <div className={headerPosition}>
+                    <div className={`multiselector-header ${headerTextOrientation}`} >{headerTitle}</div>
+                    <div className={`multiselector-body ${bodyLeftOffset}`}>
                         <div className='multiselector-content'>
-                            <ul>
-                                <li><input type='checkbox' /><label>Label 1</label></li>
-                                <li><input type='checkbox' /><label>Label 2</label></li>
-                                <li><input type='checkbox' /><label>Label 3</label></li>
+                            
+                            <ul id={mulselectorItemListId}>
+                                {isAllSelected?<li><input type='checkbox' checked id={SELECT_ALL} 
+                                onClick={this.onItemCheckedChange} 
+                                />
+                                                <label for={SELECT_ALL}>{SELECT_ALL}</label>
+                                               </li>
+                                            :<li><input type='checkbox'  id={SELECT_ALL} 
+                                            onClick={this.onItemCheckedChange} 
+                                            />
+                                                <label for={SELECT_ALL}>{SELECT_ALL}</label>
+                                            </li>
+                                }
+                                {availableiItems.map((item)=>{
+                                    let isSelectedType=checkedItems.indexOf(item)>-1;
+                                    if (isSelectedType) {
+                                        return <li><input type='checkbox' checked id={item} 
+                                        onClick={this.onItemCheckedChange}
+                                        />
+                                              <label for={item}>{item}</label>
+                                          </li>
+                                    } else {
+                                        return <li><input type='checkbox' id={item} 
+                                        onClick={this.onItemCheckedChange}
+                                        />
+                                              <label for={item}>{item}</label>
+                                          </li>
+                                    }
+                                })}
                             </ul>
                         </div>
                         <div className='multiselector-footer'>
-                            <span>Cancel</span>
-                            <span>Update</span>
+                          <span onClick={this.onCancelChanges}>Cancel</span>
+                          <span onClick={this.onUpdateChanges}>Update</span>
                         </div>
                     </div>
                 </div>
@@ -32,8 +155,6 @@ const mapStateToProps = (state) => ({
     
 })
 
-const mapDispatchToProps = {
-    
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(MultiSelector)
+
+export default connect(mapStateToProps)(MultiSelector)

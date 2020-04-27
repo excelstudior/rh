@@ -11,13 +11,48 @@
 }
 .multiselector{
     display: inline-block;
+    position: relative;
 }
-.multiselector-body{
-    visibility: hidden;
+.multiselector-header{
+    font-size: 1em;;
+    color:coral;
+    padding: 0.5em;
+    text-align: center;
 }
-.multiselector-body:hover{
-    visibility: visible;
+.multiselector-header-text-v{
+    writing-mode: vertical-rl;
+    text-orientation: sideways;
+    transform: rotate(180deg);
+}
+.multiselector-header:hover{
+    color:#fff;
+    background-color: coral;
 }
 .multiselector-header:hover+div{
-    visibility: visible;
+    display: block;
+}
+.multiselector-body{
+    display: none;
+    position: absolute;
+    background-color:#f4f4f4;
+    z-index: 2;
+}
+.multiselector-body-offset-left{
+    top:0;
+    left:2em;
+}
+.multiselector-body-offset-top{
+    top:2em;
+}
+.multiselector-body:hover{
+    display: block;
+}
+.multiselector-footer{
+    padding: 0.5em;
+    background-color: coral;
+}
+.multiselector-footer label{
+    display: inline;
+    padding: 0.5em;
+    color:#fff;
 }

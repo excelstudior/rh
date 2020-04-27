@@ -19,7 +19,8 @@ export function callApi(basePath,relativePath,pathParams,authObject,httpMethod,d
  * @param {Object} data Can be body data or query params data. query param will be stringigy by 'query-string'
  * @param {String} accept Accepted content type
  * @param {String} contentType Send content type
-  * @param {Array} types Redux-api-middleware types 
+ * @param {Array} types Redux-api-middleware types 
+ * @param {Object} meta meta object contain other informations
  */
 export function asyncCallApi(basePath,relativePath,pathParams,authObject,httpMethod,data,accept,contentType,headers,types){
     let rass={}; 
@@ -32,7 +33,6 @@ export function asyncCallApi(basePath,relativePath,pathParams,authObject,httpMet
     
     rass.method=httpMethod;
     rass.types=types;
-    
     newHeaders.Authorization=authorization;
    // newHeaders[Access-Control-Allow-Origin]= "*";
     if(accept!=null){

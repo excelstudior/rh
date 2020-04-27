@@ -1,4 +1,6 @@
 import queryString from 'query-string';
+import { API_FUEL, API_FUEL_CLIENT_CREDENTIALS } from './constant';
+import { auth } from 'fuelConfig';
 /**
  * Stringify value of the path parameter
  * @param param
@@ -114,14 +116,21 @@ export const getBearerToken = (apiName)=>{
         return '';
     }
     let apiObj=JSON.parse(api);
-    //let expires_in=new Date(apiObj.expires_in);
-    if (Date.now()<apiObj.expires_in){
-        return apiObj.access_token
-    } else {
-        return ''
-    }
+    return apiObj.access_token
 }
 
+export const createReduxApiMiddlwareMetaObj = (apiName)=>{
+    switch(apiName){
+        case API_FUEL:
+            return {
+                type:API_FUEL,
+                grand_type:API_FUEL_CLIENT_CREDENTIALS,
+                auth:auth
+            }
+        default:
+            return new Object()
+    }
+}
 export const paddingZero=(totalLength,numbersToBePad)=>{
     let str=numbersToBePad.toString()
     if (str.length<totalLength)
