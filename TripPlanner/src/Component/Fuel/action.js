@@ -5,6 +5,7 @@ import { auth } from 'fuelConfig';
 import { API_FUEL,API_FUEL_CLIENT_CREDENTIALS, API_FUEL_HEADER_CONTENTTYPE } from '../../Api/constant';
 import { FUEL_BASEPATH, FUEL_GET_ALL_FUEL_PRICES } from '../../Api/endPoints';
 import { buildFuelApiCommonHeaderObject } from './util';
+import { SHOW_CONTENT} from "./constant";
 import { GET_ALL_FUEL_PRICES_REQUEST, 
     GET_ALL_FUEL_PRICES_SUCCESS, 
     GET_ALL_FUEL_PRICES_FAILURE, 
@@ -13,6 +14,7 @@ import { GET_ALL_FUEL_PRICES_REQUEST,
     CONNECT_FUEL_API_REQUEST, 
     UPDATE_SELECTED_FUEL_TYPES,
     UPDATE_SELECTED_FUEL_BRAND,
+    INIT_GEOLOCATION
     } from './constant';
 
 
@@ -84,3 +86,14 @@ export const getAllFuelPrices = ()=>{
         }
     
 }
+
+export const showContent = (content)=>({
+    type:SHOW_CONTENT,
+    payload:content
+})
+
+
+export const initGeolocation = (location) =>({
+    type:INIT_GEOLOCATION,
+    payload:location
+})

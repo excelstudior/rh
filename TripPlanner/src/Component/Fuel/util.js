@@ -21,7 +21,7 @@ export const getValuesOfGivenProperty = (propertyName,obj)=>{
 export function getUniqueValuesOfAnArray(array){
 
     let newArray=[];
-    for(let i=0;i<array.length-1;i++){
+    for(let i=0;i<array.length;i++){
         let item=array[i];
         if (newArray.indexOf(item)<0){
             newArray=[...newArray,item]

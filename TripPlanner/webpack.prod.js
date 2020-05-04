@@ -106,6 +106,7 @@ const client={
         alias:{
             tpnswConfig:path.resolve(__dirname,'src/Config/tpnsw.js'),
             fuelConfig:path.resolve(__dirname,'src/Config/fuel.js'),
+            googleConfig:path.resolve(__dirname,'src/Config/google.js'),
             appText:path.resolve(__dirname,'src/App/constants.js'),
             apiEndpoints:path.resolve(__dirname,'src/Api/endPoints.js'),
         }

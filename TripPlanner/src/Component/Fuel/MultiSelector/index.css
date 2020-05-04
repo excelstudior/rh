@@ -10,11 +10,12 @@
     align-content: flex-start;
 }
 .multiselector{
-    display: inline-block;
+    display: block;
     position: relative;
+    width: 100%;
 }
 .multiselector-header{
-    font-size: 1em;;
+    font-size: 1.25rem;;
     color:coral;
     padding: 0.5em;
     text-align: center;
@@ -27,16 +28,53 @@
 .multiselector-header:hover{
     color:#fff;
     background-color: coral;
+    cursor: pointer;
 }
-.multiselector-header:hover+div{
+/* .multiselector-header:hover+div{
     display: block;
+} */
+.multiselector-content{
+    overflow-y: scroll;
 }
+.multiselector-content ul{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    /* margin-left: 1.5rem;
+    margin-right: 1.5rem; */
+ }
+ 
+ .multiselector-content ul li{
+    /* margin-top:0.5em ;
+    margin-bottom:0.5em ; */
+    margin:0.5rem auto;
+    line-height: 1.25rem;
+    font-size:1.25rem;
+    padding-bottom: 0.5rem;
+    border-bottom: coral 1px solid;
+    width: 80%;
+}
+
+ .multiselector-content ul li input{
+    margin-right:1.25rem;
+
+ }
+ 
+  
+
 .multiselector-body{
-    display: none;
+    /* display: none; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    width: 100vw;
     position: absolute;
     background-color:#f4f4f4;
     z-index: 2;
 }
+
 .multiselector-body-offset-left{
     top:0;
     left:2em;
@@ -44,15 +82,54 @@
 .multiselector-body-offset-top{
     top:2em;
 }
-.multiselector-body:hover{
-    display: block;
+.multiselector-body-offset-bottom{
+    bottom:0;
 }
+.multiselector-body-offset-right{
+    right:0;
+}
+/* .multiselector-body:hover{
+    display: block;
+    
+} */
 .multiselector-footer{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
     padding: 0.5em;
     background-color: coral;
 }
-.multiselector-footer label{
-    display: inline;
+.multiselector-footer span{
+    display: block;
     padding: 0.5em;
     color:#fff;
+}
+
+.multiselector-checkbox-container{
+    display: block;
+    position: relative;
+    padding-left: 55px;
+    cursor: pointer;
+   
+}
+.multiselector-checkbox-container label{
+     font-size: 1.25rem;
+}
+.multiselector-checkbox-container input{
+    position: absolute;
+    opacity: 0;
+    height: 0;
+    width: 0;
+    cursor: pointer;
+}
+.multiselector-checkbox-container input:checked ~ span{
+    background-color: coral;
+}
+.multiselector-checkbox-container span{
+    position: absolute;
+    height: 1.25rem;
+    width: 1.25rem;
+    top:0;
+    left: 1.5rem;;
+    background-color: #dedede;
 }
