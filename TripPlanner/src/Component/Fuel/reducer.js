@@ -46,7 +46,9 @@ const initState={
         {type:FuelConstants.FUEL_TYPE_B20, name:'Biodiesel 20'}, 
         {type:FuelConstants.FUEL_TYPE_EV, name:'EV charge'} ],
     contentObj:'',
-    locationObj:{latitude:0,longitude:0},
+    locationObj:{latitude:-33.9233684,longitude:151.1847079},
+    googleMap:null,
+    googleMapAutocomplete:null,
 }
 
 const fuel = (state=initState,action)=>{
@@ -77,6 +79,11 @@ const fuel = (state=initState,action)=>{
         case FuelConstants.INIT_GEOLOCATION:
             console.log( 'location', action.payload )
             return { ...state,locationObj: Object.assign(state.locationObj,action.payload)}
+        case FuelConstants.GET_SUBURBS_LOCATION_INFO_SUCCESS:
+            console.log( 'location info ', action.payload)
+            return { ...state }
+        case FuelConstants.SET_GOOGLE_MAP:
+            return { ...state, googleMap:action.payload}
         default:
             return state
     }

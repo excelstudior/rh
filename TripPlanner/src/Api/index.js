@@ -33,7 +33,7 @@ export function asyncCallApi(basePath,relativePath,pathParams,authObject,httpMet
     
     rass.method=httpMethod;
     rass.types=types;
-    newHeaders.Authorization=authorization;
+    if ( authorization!='' ){newHeaders.Authorization=authorization};
    // newHeaders[Access-Control-Allow-Origin]= "*";
     if(accept!=null){
         newHeaders.Accept=accept

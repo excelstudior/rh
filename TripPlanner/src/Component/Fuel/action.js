@@ -1,11 +1,14 @@
+import axios from 'axios';
 import { isConnectingToApi, getBearerToken, formatUTCDateTime, buildAuthBearerObject, createReduxApiMiddlwareMetaObj } from '../../Api/utils';
 import { FUEL_AUTH_URL} from 'apiEndpoints';
 import { callApi } from '../../Api/index';
 import { auth } from 'fuelConfig';
-import { API_FUEL,API_FUEL_CLIENT_CREDENTIALS, API_FUEL_HEADER_CONTENTTYPE } from '../../Api/constant';
-import { FUEL_BASEPATH, FUEL_GET_ALL_FUEL_PRICES } from '../../Api/endPoints';
+import { API_FUEL,API_FUEL_CLIENT_CREDENTIALS, API_FUEL_HEADER_CONTENTTYPE, API_POSTCODE } from '../../Api/constant';
+import { FUEL_BASEPATH, FUEL_GET_ALL_FUEL_PRICES, 
+    // POSTCODE_API_ROOT, POSTCODE_API_SUBURBS 
+} from '../../Api/endPoints';
 import { buildFuelApiCommonHeaderObject } from './util';
-import { SHOW_CONTENT} from "./constant";
+import { SHOW_CONTENT, GET_SUBURBS_LOCATION_INFO_REQUEST, GET_SUBURBS_LOCATION_INFO_SUCCESS, GET_SUBURBS_LOCATION_INFO_FAILURE, SET_GOOGLE_MAP, SET_GOOGLE_MAP_AUTOCOMPLETE} from "./constant";
 import { GET_ALL_FUEL_PRICES_REQUEST, 
     GET_ALL_FUEL_PRICES_SUCCESS, 
     GET_ALL_FUEL_PRICES_FAILURE, 
@@ -16,6 +19,7 @@ import { GET_ALL_FUEL_PRICES_REQUEST,
     UPDATE_SELECTED_FUEL_BRAND,
     INIT_GEOLOCATION
     } from './constant';
+import { Autocomplete } from '@react-google-maps/api';
 
 
 // API related functions
@@ -92,8 +96,12 @@ export const showContent = (content)=>({
     payload:content
 })
 
-
 export const initGeolocation = (location) =>({
     type:INIT_GEOLOCATION,
     payload:location
+})
+//Google Address API 
+export const setGoogleMapObj = ( map ) =>({
+    type:SET_GOOGLE_MAP,
+    payload:map
 })

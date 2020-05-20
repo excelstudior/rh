@@ -1,0 +1,26 @@
+.listview{
+    position: relative;
+    height: 100%;
+}
+.listview-title{
+    position: fixed;
+    width: 100%;
+    line-height: 3rem;
+    top:0;
+    background-color: #3197E9;
+    font-size: 1.25rem;
+    text-align: center;
+    color:#fff;
+}
+.listview-list{
+    margin-top:3rem;
+    margin-bottom: 3rem;
+    overflow-y:scroll ;
+}
+.listview-footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 3rem;
+    background-color: #fff;
+}

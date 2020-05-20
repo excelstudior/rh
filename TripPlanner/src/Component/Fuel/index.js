@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from './action';
+import { map } from 'googleConfig';
 import appText from 'appText';
 import './index.css';
 import { TITLE_FUEL_TYPE,TITLE_FUEL_BRAND,BUTTON_REFRESH_ALL_FUEL_PRICES,
@@ -20,9 +21,28 @@ export class Fuel extends Component {
         this.props.connectToFuelApi();
     }
     componentWillMount(){
-        this.getGeoLocation()
-     }
-     getGeoLocation = () =>{
+       //this.props.showContent(CONTENT_FUEL_PRICE_MAPVIEW)
+        //this.getGeoLocation()
+        this.initGoogleMap()
+    }
+    
+    createGoogleMapScriptTag = () =>{
+        const googleMapScript=document.createElement('script')
+        googleMapScript.src=`https://maps.googleapis.com/maps/api/js?key=${map.apiKey}&libraries=geometry,places,drawing&callback=setGoogleMap`
+        googleMapScript.async=true;
+        googleMapScript.defer=true;
+        window.document.body.appendChild(googleMapScript);
+    }
+    initGoogleMap = () => {
+        window.setGoogleMap=this.setGoogleMap;
+        this.createGoogleMapScriptTag()
+    }
+
+    setGoogleMap = () =>{
+        let map= window.google
+        this.props.setGoogleMapObj(map)
+    }
+    getGeoLocation = () =>{
           navigator.geolocation.getCurrentPosition((result)=>{
            //  console.log(result);
              let location={};
@@ -33,6 +53,11 @@ export class Fuel extends Component {
              this.props.showContent(CONTENT_FUEL_PRICE_MAPVIEW)
          })
      }
+
+    setGeoLocation = (location) =>{
+        this.props.initGeolocation(location);
+        this.props.showContent(CONTENT_FUEL_PRICE_MAPVIEW);
+    }
     refreshAllFuelPrices = () =>{
         event.preventDefault();
         this.props.getAllFuelPrices();
@@ -66,7 +91,9 @@ export class Fuel extends Component {
             case CONTENT_FUEL_PRICE_MAPVIEW:
                 return <MapView location={this.props.locationObj}/>
             default:
-                return <LocationInfo/>
+                return <LocationInfo googleMap={this.props.googleMap}   
+                                     setLocation={this.setGeoLocation}
+                                     />
         }
     }
 
@@ -104,7 +131,8 @@ const mapStateToProps = (state) => ({
     brands:state.fuel.availableStationBrand,
     selectedFuelBrand:state.fuel.selectedFuelBrand,
     contentObj:state.fuel.contentObj,
-    locationObj:state.fuel.locationObj
+    locationObj:state.fuel.locationObj,
+    googleMap:state.fuel.googleMap,
 })
 
 

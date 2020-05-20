@@ -67,6 +67,8 @@ export function buildAuthorization ( auth ){
             }
         case 'Bearer':
             return 'Bearer '+auth.accessToken
+        case 'none':
+            return ''
         default:
             throw new Error('Unknown authentication type: '+ auth.type);
     }

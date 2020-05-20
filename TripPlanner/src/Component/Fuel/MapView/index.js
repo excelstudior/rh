@@ -12,15 +12,16 @@ export class MapView extends Component {
         this.mapBody=React.createRef()
     }
     componentDidMount(){
-        console.log(this.props)
-        window.initGoogleMap=this.initializeMap;
-        console.log(window.initGoogleMap)
+        // console.log(this.props)
+        // window.initGoogleMap=this.initializeMap;
+        // console.log(window.initGoogleMap)
 
-        const googleMapScript=document.createElement('script')
-        googleMapScript.src=`https://maps.googleapis.com/maps/api/js?key=${map.apiKey}&libraries=drawing,geometry&callback=initGoogleMap`
-        googleMapScript.async=true;
-        googleMapScript.defer=true;
-        window.document.body.appendChild(googleMapScript);
+        // const googleMapScript=document.createElement('script')
+        // googleMapScript.src=`https://maps.googleapis.com/maps/api/js?key=${map.apiKey}&callback=initGoogleMap`
+        // googleMapScript.async=true;
+        // googleMapScript.defer=true;
+        // window.document.body.appendChild(googleMapScript);
+        this.initializeMap()
     }
 
     /**
